@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:12:21 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 17:29:04 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:42:47 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	draw_grid_reference(t_mlx *mlx)
 {
-	mlx_string_put(mlx->mlxptr, mlx->winptr, 
+	mlx_string_put(mlx->mlxptr, mlx->winptr,
 		20, WIN_HEIGHT / 2, WHITE, "This is real -1");
 	mlx_string_put(mlx->mlxptr, mlx->winptr,
 		WIN_WIDTH / 2, 20, WHITE, "This is complex 1");
 }
 
+//draw_grid_reference(mlx);
 void	menu(t_mlx *mlx)
 {
 	mlx_string_put(mlx->mlxptr, mlx->winptr, 20, 20,
 		WHITE, "Press 'ESC' to EXIT PROGRAM");
 	mlx_string_put(mlx->mlxptr, mlx->winptr, 20, 40,
 		WHITE, "Press 'M' or 'N' to toggle MOUSE_MODE ON / OFF ");
-	//draw_grid_reference(mlx);
 }
 
 static int	exit_fdf(t_mlx *mlx)
