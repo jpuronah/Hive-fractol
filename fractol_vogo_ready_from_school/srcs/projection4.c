@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   projection1_mandelbrot.c                           :+:      :+:    :+:   */
+/*   projection4.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/15 21:42:56 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 21:05:07 by jpuronah         ###   ########.fr       */
+/*   Created: 2022/10/20 20:49:28 by jpuronah          #+#    #+#             */
+/*   Updated: 2022/10/20 21:06:39 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-/*
-int	set_colour(int color)
+
+static float	ft_absf(float i)
+{
+	if (i < 0.0)
+		return (-1.0 * i);
+	return (i);
+}
+
+static int	set_colour(int color)
 {
 	if (color >= 31)
 		return (BLACK);
@@ -79,52 +86,48 @@ int	set_colour(int color)
 	else
 		return (AE);
 	return (0);
-}*/
+}
 
-/* Iterations measure, how fast the single
-	pixel value will 'blow up' towards infinity*/
-static void	run_fractal_equation_mandelbrot(t_mlx *mlx)
+
+static void	run_fractal_equation_fourth(t_mlx *mlx)
 {
 	float	tmp;
 
-// zreal = x;
-// zimag = y;
-//		(x, y);
-//	mlx.z_real = mlx.constant_x;
-//	mlx.z_imaginary = mlx.constant_y;
 	tmp = 0.0;
-	while (mlx->color++ < mlx->iterations)
+	while (mlx->color++ < ft_absf(mlx->iterations))
 	{
-		tmp = mlx->z_imaginary;
-		mlx->z_imaginary = 2 * mlx->z_real * mlx->z_imaginary + mlx->constant_y;
-		mlx->z_real = (mlx->z_real * mlx->z_real) - (tmp * tmp) + mlx->constant_x;
-		if (((mlx->z_real * mlx->z_real) + 
-			(mlx->z_imaginary * mlx->z_imaginary)) > 4)
+		tmp = ft_absf(mlx->z_imaginary);
+		//ft_absf(mlx->z_real_number_2) = ft_absf(mlx->z_real) * ft_absf(mlx->z_real);
+		//ft_absf(mlx->z_imaginary_number_2) = ft_absf(mlx->z_imaginary) * ft_absf(mlx->z_imaginary);
+		mlx->z_imaginary = 2 * ft_absf(mlx->z_real) * ft_absf(mlx->z_imaginary) + ft_absf(mlx->constant_y);
+		mlx->z_real = (ft_absf(mlx->z_real) * ft_absf(mlx->z_real)) - (tmp * tmp) + ft_absf(mlx->constant_x);
+		if (((ft_absf(mlx->z_real) * ft_absf(mlx->z_real)) + 
+			(ft_absf(mlx->z_imaginary) * ft_absf(mlx->z_imaginary))) > 4)
 			break ;
+		//if (ft_absf(mlx.z_real_number_2) + ft_absf(mlx->z_imaginary_number_2) > 4)
+		//	break ;
 	}
-	//if (mlx->color == 26)
-	//{
-	//	printf("x: %d, y: %d, color: %d\n", mlx->x, mlx->y, mlx->color);
-	//	printf("real2: %f, imag2: %f\n", (mlx->z_real * mlx->z_real), (mlx->z_imaginary * mlx->z_imaginary));
-	//}
 }
 
-void	mandelbrot_calculus(t_mlx mlx)
+void	optional_fractal_calculus(t_mlx mlx)
 {
 	clear_image(mlx.image);
-	//mlx.x = 0;
+	mlx.x = 0;
 	mlx.y = 0;
 	while (mlx.y < WIN_HEIGHT)
 	{
+		//ft_absf(mlx.constant_y) = ft_absf(mlx.y_axis_max) - ft_absf(mlx.y) * ft_absf(mlx.pixel_length_y);
+		mlx.constant_y = ft_absf(mlx.y_axis_min) + (ft_absf(mlx.y) + ft_absf(mlx.y_offset)) * ft_absf(mlx.pixel_length_y);
 		mlx.x = 0;
-		mlx.constant_y = mlx.y_axis_min + (mlx.y + mlx.y_offset) * mlx.pixel_length_y;
 		while (mlx.x < WIN_WIDTH)
 		{
-			mlx.constant_x = mlx.x_axis_min + (mlx.x + mlx.x_offset) * mlx.pixel_length_x;
-			mlx.z_real = mlx.constant_x;
-			mlx.z_imaginary = mlx.constant_y;
-			mlx.color = 0;
-			run_fractal_equation_mandelbrot(&mlx);
+			//ft_absf(mlx.constant_x) = ft_absf(mlx.x_axis_min) + ft_absf(mlx.x) * ft_absf(mlx.pixel_length_x);
+			mlx.constant_x = ft_absf(mlx.x_axis_min) + (ft_absf(mlx.x) + ft_absf(mlx.x_offset)) * ft_absf(mlx.pixel_length_x);
+			mlx.z_real = ft_absf(mlx.constant_x);
+			mlx.z_imaginary = ft_absf(mlx.constant_y);
+			mlx.colo = 0;
+			//run_fractal_equation_third(&mlx);
+			run_fractal_equation_fourth(&mlx);
 			color_pixel_in_image(mlx.image, mlx.x, mlx.y, set_colour(mlx.color));
 			mlx.x++;
 		}

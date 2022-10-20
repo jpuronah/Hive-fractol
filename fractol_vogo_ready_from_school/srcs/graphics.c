@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:27:13 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 15:26:22 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 21:41:01 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	init_fractal(t_mlx mlx)
 	if (mlx.fractal_type == 1)
 		mandelbrot_calculus(mlx);
 	if (mlx.fractal_type == 2)
-		mlx_hook(mlx.winptr, 6, 0, &mouse_events_julia, &mlx);
+		mlx_hook(mlx.winptr, 6, 0, &julia_coordinates, &mlx);
 	if (mlx.fractal_type == 3)
 		optional_fractal_calculus(mlx);
 }

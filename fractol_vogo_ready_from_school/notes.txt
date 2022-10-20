@@ -1,6 +1,13 @@
 FUCK MEE!!!
+SOSSOSSOSSOSSOSSOSSOSSOSSOS
+
+ JULIA SEG faulttaa
+
+SOSSOSSOSSOSSOSSOSSOSSOSSOS
 
 - Colors Funktio jotenki jiiriin
+
+- Tee semmone etta jos liia isoja valueita nii ei seg faulttaa vaa resettaa arvot mielummi
 
 - -c=current pixel coordinate, vaihda variable nimet (KAIKKI OIKEESTAAN
   Vaihtoon:

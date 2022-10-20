@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:12:21 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 17:42:47 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 19:29:29 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,14 @@ int	key_event(int key, t_mlx *mlx)
 		exit_fdf(mlx);
 	if (key == 65307)
 		exit_fdf(mlx);
-	if (key == 65361)
-		mlx->x_offset += 100;
-	if (key == 65363)
-		mlx->x_offset -= 100;
-	if (key == 65362)
-		mlx->y_offset += 100;
-	if (key == 65364)
-		mlx->y_offset -= 100;
+	if (key == 123)
+		mlx->x_offset -= 10;
+	if (key == 124)
+		mlx->x_offset += 10;
+	if (key == 126)
+		mlx->y_offset -= 10;
+	if (key == 125)
+		mlx->y_offset += 10;
 	menu(mlx);
 	return (0);
 }

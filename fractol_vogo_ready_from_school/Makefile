@@ -6,14 +6,14 @@
 #    By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:44:35 by jpuronah          #+#    #+#              #
-#    Updated: 2022/10/20 17:37:34 by jpuronah         ###   ########.fr        #
+#    Updated: 2022/10/20 21:03:22 by jpuronah         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fractol
 SOURCES = main.c graphics.c image.c keyboard.c \
 projection1_mandelbrot.c projection2_julia.c projection3.c \
-main_help.c mouse.c
+main_help.c mouse.c colors.c
 OBJECTIVES = $(SOURCES:.c=.o)
 DIR_S = srcs
 DIR_O = obj
@@ -48,9 +48,11 @@ $(NAME):
 	@gcc -c $(FLAGS) -I includes -o $(DIR_O)/projection3.o -c $(DIR_S)/projection3.c
 	@mkdir -p $(DIR_O)
 	@gcc -c $(FLAGS) -I includes -o $(DIR_O)/mouse.o -c $(DIR_S)/mouse.c
+	@mkdir -p $(DIR_O)
+	@gcc -c $(FLAGS) -I includes -o $(DIR_O)/colors.o -c $(DIR_S)/colors.c
 	@ar rc $(NAME) $($(DIR_O))
 
-	gcc $($(DIR_O)) $(CFLAGS) -o $(NAME) $(MLX) -Llibft -lft $(LINKSHOME)
+	gcc $($(DIR_O)) $(CFLAGS) -o $(NAME) $(MLX) -Llibft -lft $(FRAMEWORK)
 	@echo "fractol COMPILED"
 
 nf: clean
@@ -73,9 +75,11 @@ nf: clean
 	@gcc -c $(FLAGS) -I includes -o $(DIR_O)/projection3.o -c $(DIR_S)/projection3.c
 	@mkdir -p $(DIR_O)
 	@gcc -c $(FLAGS) -I includes -o $(DIR_O)/mouse.o -c $(DIR_S)/mouse.c
+	@mkdir -p $(DIR_O)
+	@gcc -c $(FLAGS) -I includes -o $(DIR_O)/colors.o -c $(DIR_S)/colors.c
 	@ar rc $(NAME) $($(DIR_O))
 
-	gcc $($(DIR_O)) $(CFLAGS) -o $(NAME) $(MLX) -Llibft -lft $(LINKSHOME)
+	gcc $($(DIR_O)) $(CFLAGS) -o $(NAME) $(MLX) -Llibft -lft $(FRAMEWORK)
 	@echo "fractol COMPILED"
 
 clean:
