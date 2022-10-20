@@ -233,3 +233,34 @@ t_map    create_map(char *file_name, int height, int width)
     return (map);
 }
 
+
+
+
+	/*float				mandelbrot_c_imaginary;
+	float				mandelbrot_c_real;
+
+	float				third_c_imaginary;
+	float				third_c_real;*/
+
+	/*long double			real_number_min;
+	long double			real_number_max;
+	long double			imaginary_number_min;
+	long double			imaginary_number_max;
+
+	long double			zoom_real_number;		// ZOOM X ASKELI
+	long double			zoom_imaginary_number;	// ZOOM Y AKSELI
+
+	long double			z_imaginary_number_2;
+	long double			z_real_number_2;
+	long double			c_imaginary;
+	long double			z_imaginary;
+	long double			c_real;
+	long double			z_real;
+	long double			julia_c_imaginary;
+	long double			julia_c_real;
+
+	long double			mandelbrot_c_imaginary;
+	long double			mandelbrot_c_real;
+
+	long double			third_c_imaginary;
+	long double			third_c_real;*/

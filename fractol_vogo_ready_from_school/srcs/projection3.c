@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:43:52 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 16:46:28 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:28:18 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,26 @@ static int	colour(int color)
 	return (0);
 }
 
+static void	run_fractal_equation_third(t_mlx *mlx)
+{
+	float	tmp;
+
+	tmp = 0.0;
+	while (mlx->color++ < mlx->iterations)
+	{
+		tmp = mlx->z_imaginary;
+		//mlx->z_real_number_2 = mlx->z_real * mlx->z_real;
+		//mlx->z_imaginary_number_2 = mlx->z_imaginary * mlx->z_imaginary;
+		mlx->z_imaginary = -2 * mlx->z_real * mlx->z_imaginary + mlx->constant_y;
+		mlx->z_real = (mlx->z_real * mlx->z_real) - (tmp * tmp) + mlx->constant_x;
+		if (((mlx->z_real * mlx->z_real) + 
+			(mlx->z_imaginary * mlx->z_imaginary)) > 4)
+			break ;
+		//if (mlx.z_real_number_2 + mlx->z_imaginary_number_2 > 4)
+		//	break ;
+	}
+}
+
 void	optional_fractal_calculus(t_mlx mlx)
 {
 	clear_image(mlx.image);
@@ -88,23 +108,26 @@ void	optional_fractal_calculus(t_mlx mlx)
 	mlx.y = 0;
 	while (mlx.y < WIN_HEIGHT)
 	{
-		mlx.c_imaginary = mlx.y_axis_max - mlx.y * mlx.pixel_length_y;
+		//mlx.constant_y = mlx.y_axis_max - mlx.y * mlx.pixel_length_y;
+		mlx.constant_y = mlx.y_axis_min + (mlx.y + mlx.y_offset) * mlx.pixel_length_y;
 		mlx.x = 0;
 		while (mlx.x < WIN_WIDTH)
 		{
-			mlx.c_real = mlx.x_axis_min + mlx.x * mlx.pixel_length_x;
-			mlx.z_real = mlx.c_real;
-			mlx.z_imaginary = mlx.c_imaginary;
+			//mlx.constant_x = mlx.x_axis_min + mlx.x * mlx.pixel_length_x;
+			mlx.constant_x = mlx.x_axis_min + (mlx.x + mlx.x_offset) * mlx.pixel_length_x;
+			mlx.z_real = mlx.constant_x;
+			mlx.z_imaginary = mlx.constant_y;
 			mlx.color = 0;
-			while (mlx.color++ < mlx.iterations)
+			run_fractal_equation_third(&mlx);
+			/*while (mlx.color++ < mlx.iterations)
 			{
 				mlx.z_real_number_2 = mlx.z_real * mlx.z_real;
 				mlx.z_imaginary_number_2 = mlx.z_imaginary * mlx.z_imaginary;
 				if (mlx.z_real_number_2 + mlx.z_imaginary_number_2 > 4)
 					break ;
-				mlx.z_imaginary = -2 * mlx.z_real * mlx.z_imaginary + mlx.c_imaginary;
-				mlx.z_real = mlx.z_real_number_2 - mlx.z_imaginary_number_2 + mlx.c_real;
-			}
+				mlx.z_imaginary = -2 * mlx.z_real * mlx.z_imaginary + mlx.constant_y;
+				mlx.z_real = mlx.z_real_number_2 - mlx.z_imaginary_number_2 + mlx.constant_x;
+			}*/
 			color_pixel_in_image(mlx.image, mlx.x, mlx.y, colour(mlx.color));
 			mlx.x++;
 		}

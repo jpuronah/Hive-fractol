@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:18:34 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 16:47:57 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:05:12 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define FRACTOL_H
 # define WIN_WIDTH 540
 # define WIN_HEIGHT 540
+
+# include "../libft/libft.h"
+# include <mlx.h>
+# include <fcntl.h>
+# include <math.h>
+# include <stdio.h>
 
 
 # define WHITE 0xFFFFFF
@@ -61,12 +67,6 @@
 # define AD 0x946aa2
 # define AE 0x5d4c86
 
-# include "../libft/libft.h"
-# include <mlx.h>
-# include <fcntl.h>
-# include <math.h>
-# include <stdio.h>
-
 typedef struct s_image
 {
 	void		*image;
@@ -76,24 +76,16 @@ typedef struct s_image
 	int			endian;
 }				t_image;
 
-/*
-typedef struct s_fractal
-{
-
-}					t_fractal;*/
-
 typedef struct s_mlx
 {
 	void		*mlxptr;
 	void		*winptr;
-	int			projection;
-	int			end;
 	t_image		*image;
 
-	int					fractal_type;
 	int					first_round;
-	int					mouse_x;
-	int					mouse_y;
+	//int					mouse_x;
+	//int					mouse_y;
+	int					fractal_type;
 	int					x_offset;
 	int					y_offset;
 
@@ -102,51 +94,31 @@ typedef struct s_mlx
 	int					color;
 	unsigned int		iterations;
 
-	float				pixel_length_x;	// ZOOM X ASKELI
-	float				pixel_length_y;	// ZOOM Y AKSELI
+	float				pixel_length_x;
+	float				pixel_length_y;
 
 	float				x_axis_min;
 	float				x_axis_max;
 	float				y_axis_min;
 	float				y_axis_max;
 
-	float				z_imaginary_number_2;
-	float				z_real_number_2;//vittuun
-	float				c_imaginary;
+	//float				z_imaginary_number_2;
+	//float				z_real_number_2;
+
+	float				constant_y;
+	//float				c_imaginary;
+	
+	float				constant_x;
+	//float				c_real;
+
 	float				z_imaginary;
-	float				c_real;
+	//float				z_imaginary;
+
 	float				z_real;
-	float				julia_c_imaginary;
-	float				julia_c_real;
+	//float				z_real;
 
-	/*float				mandelbrot_c_imaginary;
-	float				mandelbrot_c_real;
-
-	float				third_c_imaginary;
-	float				third_c_real;*/
-
-	/*long double			real_number_min;
-	long double			real_number_max;
-	long double			imaginary_number_min;
-	long double			imaginary_number_max;
-
-	long double			zoom_real_number;		// ZOOM X ASKELI
-	long double			zoom_imaginary_number;	// ZOOM Y AKSELI
-
-	long double			z_imaginary_number_2;
-	long double			z_real_number_2;
-	long double			c_imaginary;
-	long double			z_imaginary;
-	long double			c_real;
-	long double			z_real;
-	long double			julia_c_imaginary;
-	long double			julia_c_real;
-
-	long double			mandelbrot_c_imaginary;
-	long double			mandelbrot_c_real;
-
-	long double			third_c_imaginary;
-	long double			third_c_real;*/
+	float				constant_y_julia;
+	float				constant_x_julia;
 }				t_mlx;
 
 /* --------------------------- Main ----------------------------------------- */
@@ -185,36 +157,3 @@ void		julia_init(t_mlx *mlx);
 void		julia_calculus(t_mlx *mlx);
 int			mouse_events_julia(int x, int y, t_mlx *mlx);
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*int			cohen_sutherland_lineclip(t_vector *vector1, t_vector *vector2);
-
-t_vector	vector_list(t_mlx *mlx, int x, int y);
-t_vector	set_projection_1(t_vector two_d, t_mlx *mlx);
-t_vector	set_projection_2_and_0(t_vector two_d, t_mlx *mlx);
-
-void		read_and_save_map(int fd, t_mlx *mlx);
-
-t_map		*init_map(void);
-void		check_line(char *line, t_mlx *mlx);
-void		map_depth(t_map *map);
-char		*save_save(char *save, char *line);
-t_map		*vectors_for_map(char *save, t_map *map);
-
-double		ft_abs_db(double i);
-double		ft_max_double(double a, double b);
-double		calculate_delta(t_vector vec1, t_vector vec2, int letter);
-void		finish_line_and_one_point(t_vector vec1, t_vector end, t_mlx *mlx);
-int			delete_save_and_map(char *save, t_map **map);
-*/

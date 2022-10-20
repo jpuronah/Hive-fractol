@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:43:13 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 16:48:13 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:05:23 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,12 @@ static void	set_grid_values(t_mlx *mlx, int fractal_type)
 
 static void	set_calculus_values(t_mlx mlx)
 {
-	mlx.z_real_number_2 = 0;
-	mlx.z_imaginary_number_2 = 0;
-	mlx.c_imaginary = 0;
+	mlx.constant_y = 0;
 	mlx.z_imaginary = 0;
-	mlx.c_real = 0;
+	mlx.constant_x = 0;
 	mlx.z_real = 0;
-	mlx.julia_c_imaginary = 0;
-	mlx.julia_c_real = 0;
+	mlx.constant_y_julia = 0;
+	mlx.constant_x_julia = 0;
 }
 
 static t_mlx	init_mlx(char *win_title, int fractal_type)
@@ -52,12 +50,10 @@ static t_mlx	init_mlx(char *win_title, int fractal_type)
 	mlx.winptr = mlx_new_window(mlx.mlxptr, WIN_WIDTH, WIN_HEIGHT, "Fractol");
 	mlx.image = new_image(mlx);
 	mlx.fractal_type = fractal_type;
-	mlx.first_round = 0;
 	mlx.x = 0;
 	mlx.y = 0;
+	mlx.first_round = 0;
 	mlx.color = 0;
-	mlx.mouse_x = 0;
-	mlx.mouse_y = 0;
 	mlx.x_offset = 0;
 	mlx.y_offset = 0;
 	set_grid_values(&mlx, fractal_type);

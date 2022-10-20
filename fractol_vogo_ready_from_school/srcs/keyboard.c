@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:12:21 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 16:43:14 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:29:04 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ int	key_event(int key, t_mlx *mlx)
 	if (key == 65363)
 		mlx->x_offset -= 100;
 	if (key == 65362)
-		mlx->y_offset -= 100;
-	if (key == 65364)
 		mlx->y_offset += 100;
+	if (key == 65364)
+		mlx->y_offset -= 100;
 	menu(mlx);
 	return (0);
 }

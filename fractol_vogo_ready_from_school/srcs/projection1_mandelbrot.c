@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:42:56 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 16:47:08 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:27:12 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static int	set_colour(int color)
 	return (0);
 }
 
-void	run_fractal_equation(t_mlx *mlx)
+static void	run_fractal_equation_mandelbrot(t_mlx *mlx)
 {
 	float	tmp;
 
@@ -89,8 +89,8 @@ void	run_fractal_equation(t_mlx *mlx)
 	while (mlx->color++ < mlx->iterations)
 	{
 		tmp = mlx->z_imaginary;
-		mlx->z_imaginary = 2 * mlx->z_real * mlx->z_imaginary + mlx->c_imaginary;
-		mlx->z_real = (mlx->z_real * mlx->z_real) - (tmp * tmp) + mlx->c_real;
+		mlx->z_imaginary = 2 * mlx->z_real * mlx->z_imaginary + mlx->constant_y;
+		mlx->z_real = (mlx->z_real * mlx->z_real) - (tmp * tmp) + mlx->constant_x;
 		if (((mlx->z_real * mlx->z_real) + 
 			(mlx->z_imaginary * mlx->z_imaginary)) > 4)
 			break ;
@@ -105,14 +105,14 @@ void	mandelbrot_calculus(t_mlx mlx)
 	while (mlx.y < WIN_HEIGHT)
 	{
 		mlx.x = 0;
-		mlx.c_imaginary = mlx.y_axis_min + (mlx.y + mlx.y_offset) * mlx.pixel_length_y;
+		mlx.constant_y = mlx.y_axis_min + (mlx.y + mlx.y_offset) * mlx.pixel_length_y;
 		while (mlx.x < WIN_WIDTH)
 		{
-			mlx.c_real = mlx.x_axis_min + (mlx.x + mlx.x_offset) * mlx.pixel_length_x;
-			mlx.z_real = mlx.c_real;
-			mlx.z_imaginary = mlx.c_imaginary;
+			mlx.constant_x = mlx.x_axis_min + (mlx.x + mlx.x_offset) * mlx.pixel_length_x;
+			mlx.z_real = mlx.constant_x;
+			mlx.z_imaginary = mlx.constant_y;
 			mlx.color = 0;
-			run_fractal_equation(&mlx);
+			run_fractal_equation_mandelbrot(&mlx);
 			color_pixel_in_image(mlx.image, mlx.x, mlx.y, set_colour(mlx.color));
 			mlx.x++;
 		}

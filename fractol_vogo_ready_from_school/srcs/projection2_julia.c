@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:43:16 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 16:47:16 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:26:55 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,7 @@ int	colour_julia(int color)
 	else
 		return (0x000000 << (color % 20));
 }
-
-void	julia_calculus(t_mlx *mlx)
-{
-	clear_image(mlx->image);
-	mlx->x = 0;
-	mlx->y = 0;
-	while (mlx->y < WIN_HEIGHT)
-	{
-		mlx->c_imaginary = mlx->y_axis_max - mlx->y * mlx->pixel_length_y;
-		mlx->x = 0;
-		while (mlx->x < WIN_WIDTH)
-		{
-			mlx->c_real = mlx->x_axis_min + mlx->x * mlx->pixel_length_x;
-			mlx->z_real = mlx->c_real;
-			mlx->z_imaginary = mlx->c_imaginary;
-			mlx->color = 0;
-			while (mlx->color++ < mlx->iterations)
+/*while (mlx->color++ < mlx->iterations)
 			{
 				mlx->z_real_number_2 = mlx->z_real * mlx->z_real;
 				mlx->z_imaginary_number_2 = mlx->z_imaginary * mlx->z_imaginary;
@@ -61,7 +45,68 @@ void	julia_calculus(t_mlx *mlx)
 					break ;
 				mlx->z_imaginary = 2 * mlx->z_real * mlx->z_imaginary + mlx->julia_c_imaginary;		//Tämä on mouse_move_c value 
 				mlx->z_real = mlx->z_real_number_2 - mlx->z_imaginary_number_2 + mlx->julia_c_real;	//Tämä myös
-			}																						//mlx->mouse_imaginary;
+			}						*/
+
+static void	run_fractal_equation_julia(t_mlx *mlx)
+{
+	float	tmp;
+
+	tmp = 0.0;
+	while (mlx->color++ < mlx->iterations)
+	{
+		tmp = mlx->z_imaginary;
+
+		//mlx->z_real_number_2 = mlx->z_real * mlx->z_real;
+		//mlx->z_imaginary_number_2 = mlx->z_imaginary * mlx->z_imaginary;
+		mlx->z_imaginary = 2 * mlx->z_real * mlx->z_imaginary + mlx->constant_y_julia;
+		mlx->z_real = (mlx->z_real * mlx->z_real) - (tmp * tmp) + mlx->constant_x_julia;
+		//mlx->z_real = (mlx->z_real * mlx->z_real) - mlx->z_imaginary_number_2 + mlx->constant_x_julia;
+		if (((mlx->z_real * mlx->z_real) + 
+			(mlx->z_imaginary * mlx->z_imaginary)) > 4)
+			break ;
+		//if (mlx->z_real_number_2 + mlx->z_imaginary_number_2 > 4)
+		//	break ;
+	}
+	/*float	tmp;
+
+	tmp = 0.0;
+	while (mlx->color++ < mlx->iterations)
+	{
+		tmp = mlx->z_imaginary;
+		mlx->z_imaginary = 2 * mlx->z_real * mlx->z_imaginary + mlx->constant_y;
+		mlx->z_real = (mlx->z_real * mlx->z_real) - (tmp * tmp) + mlx->constant_x;
+		if (((mlx->z_real * mlx->z_real) + 
+			(mlx->z_imaginary * mlx->z_imaginary)) > 4)
+			break ;
+	}*/
+}
+
+void	julia_calculus(t_mlx *mlx)
+{
+	clear_image(mlx->image);
+	//mlx->x = 0;
+	mlx->y = 0;
+	while (mlx->y < WIN_HEIGHT)
+	{
+		mlx->x = 0;
+		//mlx->constant_y = mlx->y_axis_max - mlx->y * mlx->pixel_length_y;
+		mlx->constant_y = mlx->y_axis_min + mlx->y * mlx->pixel_length_y;
+		while (mlx->x < WIN_WIDTH)
+		{
+			mlx->constant_x = mlx->x_axis_min + mlx->x * mlx->pixel_length_x;
+			mlx->z_real = mlx->constant_x;
+			mlx->z_imaginary = mlx->constant_y;
+			mlx->color = 0;
+			run_fractal_equation_julia(&*mlx);
+			/*while (mlx->color++ < mlx->iterations)
+			{
+				mlx->z_real_number_2 = mlx->z_real * mlx->z_real;
+				mlx->z_imaginary_number_2 = mlx->z_imaginary * mlx->z_imaginary;
+				if (mlx->z_real_number_2 + mlx->z_imaginary_number_2 > 4)
+					break ;
+				mlx->z_imaginary = 2 * mlx->z_real * mlx->z_imaginary + mlx->constant_y_julia;		//Tämä on mouse_move_c value 
+				mlx->z_real = mlx->z_real_number_2 - mlx->z_imaginary_number_2 + mlx->constant_x_julia;	//Tämä myös
+			}																						//mlx->mouse_imaginary;*/
 			color_pixel_in_image(mlx->image, mlx->x, mlx->y, colour_julia(mlx->color));					//mlx->mouse_real; ??!?!?
 			mlx->x++;
 		}
@@ -73,8 +118,8 @@ void	julia_calculus(t_mlx *mlx)
 
 int	mouse_events_julia(int x, int y, t_mlx *mlx)
 {
-	mlx->julia_c_imaginary = (y - WIN_HEIGHT * 0.5) / (WIN_HEIGHT * 0.5f);
-	mlx->julia_c_real = (x - WIN_WIDTH * 0.5) / (WIN_WIDTH * 0.5f);
+	mlx->constant_y_julia = (y - WIN_HEIGHT * 0.5) / (WIN_HEIGHT * 0.5f);
+	mlx->constant_x_julia = (x - WIN_WIDTH * 0.5) / (WIN_WIDTH * 0.5f);
 	julia_calculus(mlx);
 	return (0);
 }
