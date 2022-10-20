@@ -6,14 +6,14 @@
 #    By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/09 15:40:47 by jpuronah          #+#    #+#              #
-#    Updated: 2022/10/20 17:37:39 by jpuronah         ###   ########.fr        #
+#    Updated: 2022/10/20 17:39:00 by jpuronah         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Wpedantic -Wunused -Wconversion -Wunreachable-code -Wtype-limits
+CFLAGS = -Wall -Wextra -Werror #-Wpedantic -Wunused -Wconversion -Wunreachable-code -Wtype-limits
 AR = ar rcs
 LIBFT = libft
 SOURCES = ./ft_atoi \
