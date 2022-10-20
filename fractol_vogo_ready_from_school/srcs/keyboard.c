@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:12:21 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/19 23:57:37 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 11:11:35 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,14 @@ static int	exit_fdf(t_mlx *mlx)
 
 int	key_event(int key, t_mlx *mlx)
 {
+	printf("key: %d\n", key);
 	if (key == 53)//key == 65307
+	{
+		exit_fdf(mlx);
+		//mlx_destroy_window(mlx->mlxptr, mlx->winptr);
+		//exit(0);
+	}
+	if (key == 65307)//key == 65307
 	{
 		exit_fdf(mlx);
 		//mlx_destroy_window(mlx->mlxptr, mlx->winptr);

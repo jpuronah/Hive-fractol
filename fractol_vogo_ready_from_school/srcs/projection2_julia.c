@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:43:16 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/19 23:59:48 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 10:58:34 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ void	julia_calculus(t_mlx *mlx)
 				mlx->z_imaginary_number_2 = mlx->z_imaginary * mlx->z_imaginary;
 				if (mlx->z_real_number_2 + mlx->z_imaginary_number_2 > 4)
 					break ;
-				mlx->z_imaginary = 2 * mlx->z_real * mlx->z_imaginary + mlx->julia_c_imaginary;
-				mlx->z_real = mlx->z_real_number_2 - mlx->z_imaginary_number_2 + mlx->julia_c_real;
-			}
-			put_pixel_in_image(mlx->image, mlx->x, mlx->y, colour_julia(mlx->n));
+				mlx->z_imaginary = 2 * mlx->z_real * mlx->z_imaginary + mlx->julia_c_imaginary;		//Tämä on mouse_move_c value 
+				mlx->z_real = mlx->z_real_number_2 - mlx->z_imaginary_number_2 + mlx->julia_c_real;	//Tämä myös
+			}																						//mlx->mouse_imaginary;
+			put_pixel_in_image(mlx->image, mlx->x, mlx->y, colour_julia(mlx->n));					//mlx->mouse_real; ??!?!?
 			mlx->x++;
 		}
 		mlx->y++;

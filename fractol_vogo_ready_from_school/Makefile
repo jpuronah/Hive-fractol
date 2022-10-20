@@ -6,7 +6,7 @@
 #    By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:44:35 by jpuronah          #+#    #+#              #
-#    Updated: 2022/10/19 23:55:17 by jpuronah         ###   ########.fr        #
+#    Updated: 2022/10/20 11:11:17 by jpuronah         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ $(NAME):
 	@gcc -c $(FLAGS) -I includes -o $(DIR_O)/mouse.o -c $(DIR_S)/mouse.c
 	@ar rc $(NAME) $($(DIR_O))
 
-	gcc $($(DIR_O)) $(CFLAGS) -o $(NAME) $(MLX) -Llibft -lft $(FRAMEWORK)
+	gcc $($(DIR_O)) $(CFLAGS) -o $(NAME) $(MLX) -Llibft -lft $(LINKSHOME)
 	@echo "fractol COMPILED"
 
 nf: clean
@@ -75,7 +75,7 @@ nf: clean
 	@gcc -c $(FLAGS) -I includes -o $(DIR_O)/mouse.o -c $(DIR_S)/mouse.c
 	@ar rc $(NAME) $($(DIR_O))
 
-	gcc $($(DIR_O)) $(CFLAGS) -o $(NAME) $(MLX) -Llibft -lft $(FRAMEWORK)
+	gcc $($(DIR_O)) $(CFLAGS) -o $(NAME) $(MLX) -Llibft -lft $(LINKSHOME)
 	@echo "fractol COMPILED"
 
 clean:
