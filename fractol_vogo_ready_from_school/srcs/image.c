@@ -6,13 +6,13 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 15:12:53 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/19 15:30:00 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 15:50:07 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	put_pixel_in_image(t_image *image, int x, int y, int color)
+void	color_pixel_in_image(t_image *image, int x, int y, int color)
 {
 	char	*pixel;
 

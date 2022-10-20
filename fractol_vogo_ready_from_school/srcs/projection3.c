@@ -6,38 +6,78 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:43:52 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 00:00:25 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:46:28 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static int	colour(int n)
+static int	colour(int color)
 {
-	if (n >= 25)
-		return (LEMONCHIFFON);
-	if (n < 5)
-		return (HOTPINK);
-	if (n < 7)
-		return (FIREBRICK);
-	if (n < 9)
-		return (BLUE);
-	if (n < 2)
-		return (GRAY);
-	if (n < 11)
-		return (GREEN);
-	if (n < 13)
-		return (PURPLE);
-	if (n < 15)
-		return (RED);
-	if (n < 17)
-		return (ALICEBLUE);
-	if (n < 19)
-		return (CORAL);
-	if (n < 21)
-		return (WHITE);
-	else
+	if (color >= 31)
 		return (BLACK);
+	if (color < 1)
+		return (A);
+	if (color < 2)
+		return (B);
+	if (color < 3)
+		return (C);
+	if (color < 4)
+		return (D);
+	if (color < 5)
+		return (E);
+	if (color < 6)
+		return (F);
+	if (color < 7)
+		return (G);
+	if (color < 8)
+		return (H);
+	if (color < 9)
+		return (I);
+	if (color < 10)
+		return (J);
+	if (color < 11)
+		return (K);
+	if (color < 12)
+		return (L);
+	if (color < 13)
+		return (M);
+	if (color < 14)
+		return (N);
+	if (color < 15)
+		return (O);
+	if (color < 16)
+		return (P);
+	if (color < 17)
+		return (Q);
+	if (color < 18)
+		return (E);
+	if (color < 19)
+		return (S);
+	if (color < 20)
+		return (T);
+	if (color < 21)
+		return (U);
+	if (color < 22)
+		return (V);
+	if (color < 23)
+		return (W);
+	if (color < 24)
+		return (X);
+	if (color < 25)
+		return (Y);
+	if (color < 26)
+		return (Z);
+	if (color < 27)
+		return (AA);
+	if (color < 28)
+		return (AB);
+	if (color < 29)
+		return (AC);
+	if (color < 30)
+		return (AD);
+	else
+		return (AE);
 	return (0);
 }
 
@@ -48,15 +88,15 @@ void	optional_fractal_calculus(t_mlx mlx)
 	mlx.y = 0;
 	while (mlx.y < WIN_HEIGHT)
 	{
-		mlx.c_imaginary = mlx.imaginary_number_max - mlx.y * mlx.zoom_imaginary_number;
+		mlx.c_imaginary = mlx.y_axis_max - mlx.y * mlx.pixel_length_y;
 		mlx.x = 0;
 		while (mlx.x < WIN_WIDTH)
 		{
-			mlx.c_real = mlx.real_number_min + mlx.x * mlx.zoom_real_number;
+			mlx.c_real = mlx.x_axis_min + mlx.x * mlx.pixel_length_x;
 			mlx.z_real = mlx.c_real;
 			mlx.z_imaginary = mlx.c_imaginary;
-			mlx.n = 0;
-			while (mlx.n++ < mlx.iterations)
+			mlx.color = 0;
+			while (mlx.color++ < mlx.iterations)
 			{
 				mlx.z_real_number_2 = mlx.z_real * mlx.z_real;
 				mlx.z_imaginary_number_2 = mlx.z_imaginary * mlx.z_imaginary;
@@ -65,55 +105,11 @@ void	optional_fractal_calculus(t_mlx mlx)
 				mlx.z_imaginary = -2 * mlx.z_real * mlx.z_imaginary + mlx.c_imaginary;
 				mlx.z_real = mlx.z_real_number_2 - mlx.z_imaginary_number_2 + mlx.c_real;
 			}
-			put_pixel_in_image(mlx.image, mlx.x, mlx.y, colour(mlx.n));
+			color_pixel_in_image(mlx.image, mlx.x, mlx.y, colour(mlx.color));
 			mlx.x++;
 		}
 		mlx.y++;
 	}
 	mlx_put_image_to_window(mlx.mlxptr, mlx.winptr, mlx.image->image, 0, 0);
 	menu(&mlx);
-}
-
-void	optional_fractal_calculus_mouse_move(t_mlx mlx)
-{
-	clear_image(mlx.image);
-	mlx.x = 0;
-	mlx.y = 0;
-	while (mlx.y < WIN_HEIGHT)
-	{
-		mlx.c_imaginary = mlx.imaginary_number_max - mlx.y * mlx.zoom_imaginary_number;
-		mlx.x = 0;
-		while (mlx.x < WIN_WIDTH)
-		{
-			mlx.c_real = mlx.real_number_min + mlx.x * mlx.zoom_real_number;
-			mlx.z_real = mlx.c_real;
-			mlx.z_imaginary = mlx.c_imaginary;
-			mlx.n = 0;
-			while (mlx.n++ < mlx.iterations)
-			{
-				mlx.z_real_number_2 = mlx.z_real * mlx.z_real;
-				mlx.z_imaginary_number_2 = mlx.z_imaginary * mlx.z_imaginary;
-				if (mlx.z_real_number_2 + mlx.z_imaginary_number_2 > 4)
-					break ;
-				mlx.z_imaginary = -2 * mlx.z_real * mlx.z_imaginary + mlx.third_c_imaginary;
-				mlx.z_real = mlx.z_real_number_2 - mlx.z_imaginary_number_2 + mlx.third_c_real;
-			}
-			put_pixel_in_image(mlx.image, mlx.x, mlx.y, colour(mlx.n));
-			mlx.x++;
-		}
-		mlx.y++;
-	}
-	mlx_put_image_to_window(mlx.mlxptr, mlx.winptr, mlx.image->image, 0, 0);
-	menu(&mlx);
-}
-
-void	optional_fractal_init(t_mlx mlx)
-{
-	mlx.real_number_min = -2;
-	mlx.real_number_max = 1;
-	mlx.imaginary_number_min = -1.3;
-	mlx.imaginary_number_max = 1.3;
-	mlx.zoom_real_number = (mlx.real_number_max - mlx.real_number_min) / (WIN_WIDTH - 1);
-	mlx.zoom_imaginary_number = (mlx.imaginary_number_max - mlx.imaginary_number_min) / (WIN_HEIGHT - 1);
-	optional_fractal_calculus(mlx);
 }

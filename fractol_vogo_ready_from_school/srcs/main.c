@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:43:13 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 12:00:21 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:48:13 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@ static void	set_grid_values(t_mlx *mlx, int fractal_type)
 	if (fractal_type == 2)
 	{
 		mlx->iterations = 80;
-		mlx->real_number_min = -2;
-		mlx->real_number_max = 2;
-		mlx->imaginary_number_min = -2;
-		mlx->imaginary_number_max = 2;
+		mlx->x_axis_min = -2;
+		mlx->x_axis_max = 2;
+		mlx->y_axis_min = -2;
+		mlx->y_axis_max = 2;
 	}
 	else
 	{
 		mlx->iterations = 50;
-		mlx->real_number_min = -2;
-		mlx->real_number_max = 1;
-		mlx->imaginary_number_min = -1.3;
-		mlx->imaginary_number_max = 1.3;
+		mlx->x_axis_min = -2;
+		mlx->x_axis_max = 1;
+		mlx->y_axis_min = -1.3;
+		mlx->y_axis_max = 1.3;
 	}
 }
 
@@ -55,15 +55,14 @@ static t_mlx	init_mlx(char *win_title, int fractal_type)
 	mlx.first_round = 0;
 	mlx.x = 0;
 	mlx.y = 0;
-	mlx.n = 0;
-	mlx.mouse_move = 0;
+	mlx.color = 0;
 	mlx.mouse_x = 0;
 	mlx.mouse_y = 0;
 	mlx.x_offset = 0;
 	mlx.y_offset = 0;
 	set_grid_values(&mlx, fractal_type);
-	mlx.zoom_real_number = (mlx.real_number_max - mlx.real_number_min) / (WIN_WIDTH - 1);
-	mlx.zoom_imaginary_number = (mlx.imaginary_number_max - mlx.imaginary_number_min) / (WIN_HEIGHT - 1);
+	mlx.pixel_length_x = (mlx.x_axis_max - mlx.x_axis_min) / (WIN_WIDTH - 1);
+	mlx.pixel_length_y = (mlx.y_axis_max - mlx.y_axis_min) / (WIN_HEIGHT - 1);
 	set_calculus_values(mlx);
 	return (mlx);
 }

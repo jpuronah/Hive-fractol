@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:27:13 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/19 23:56:30 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 15:26:22 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void	init_fractal(t_mlx mlx)
 {
 	mlx.first_round = 1;
-	mlx.zoom_real_number = (mlx.real_number_max - mlx.real_number_min) / (WIN_WIDTH - 1);
-	mlx.zoom_imaginary_number = (mlx.imaginary_number_max - mlx.imaginary_number_min) / (WIN_HEIGHT - 1);
+	mlx.pixel_length_x = (mlx.x_axis_max - mlx.x_axis_min) / (WIN_WIDTH - 1);
+	mlx.pixel_length_y = (mlx.y_axis_max - mlx.y_axis_min) / (WIN_HEIGHT - 1);
 	if (mlx.fractal_type == 1)
 		mandelbrot_calculus(mlx);
 	if (mlx.fractal_type == 2)

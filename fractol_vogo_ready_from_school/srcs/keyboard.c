@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:12:21 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 12:02:39 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:43:14 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	draw_grid_reference(t_mlx *mlx)
 {
-	mlx_string_put(mlx->mlxptr, mlx->winptr, 20, WIN_HEIGHT / 2, WHITE, "This is real -1");
-	mlx_string_put(mlx->mlxptr, mlx->winptr, WIN_WIDTH / 2, 20, WHITE, "This is complex 1");
+	mlx_string_put(mlx->mlxptr, mlx->winptr, 
+		20, WIN_HEIGHT / 2, WHITE, "This is real -1");
+	mlx_string_put(mlx->mlxptr, mlx->winptr,
+		WIN_WIDTH / 2, 20, WHITE, "This is complex 1");
 }
 
 void	menu(t_mlx *mlx)
@@ -24,7 +26,7 @@ void	menu(t_mlx *mlx)
 		WHITE, "Press 'ESC' to EXIT PROGRAM");
 	mlx_string_put(mlx->mlxptr, mlx->winptr, 20, 40,
 		WHITE, "Press 'M' or 'N' to toggle MOUSE_MODE ON / OFF ");
-	draw_grid_reference(mlx);
+	//draw_grid_reference(mlx);
 }
 
 static int	exit_fdf(t_mlx *mlx)
@@ -37,26 +39,18 @@ static int	exit_fdf(t_mlx *mlx)
 int	key_event(int key, t_mlx *mlx)
 {
 	printf("key: %d\n", key);
-	if (key == 53)//key == 65307
-	{
+	if (key == 53)
 		exit_fdf(mlx);
-		//mlx_destroy_window(mlx->mlxptr, mlx->winptr);
-		//exit(0);
-	}
-	if (key == 65307)//key == 65307
-	{
+	if (key == 65307)
 		exit_fdf(mlx);
-		//mlx_destroy_window(mlx->mlxptr, mlx->winptr);
-		//exit(0);
-	}
 	if (key == 65361)
 		mlx->x_offset += 100;
 	if (key == 65363)
 		mlx->x_offset -= 100;
 	if (key == 65362)
-		mlx->y_offset += 100;
-	if (key == 65364)
 		mlx->y_offset -= 100;
+	if (key == 65364)
+		mlx->y_offset += 100;
 	menu(mlx);
 	return (0);
 }

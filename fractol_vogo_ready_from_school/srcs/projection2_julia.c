@@ -6,36 +6,36 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:43:16 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 10:58:34 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:47:16 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	colour_julia(int n)
+int	colour_julia(int color)
 {
-	if (n >= 40)
+	if (color >= 40)
 		return (LEMONCHIFFON);
-	if (n < 2)
+	if (color < 2)
 		return (HOTPINK);
-	if (n < 4)
+	if (color < 4)
 		return (FIREBRICK);
-	if (n < 6)
+	if (color < 6)
 		return (BLUE);
-	if (n < 8)
+	if (color < 8)
 		return (GRAY);
-	if (n < 10)
+	if (color < 10)
 		return (GREEN);
-	if (n < 12)
+	if (color < 12)
 		return (PURPLE);
-	if (n < 14)
+	if (color < 14)
 		return (RED);
-	if (n < 16)
+	if (color < 16)
 		return (ALICEBLUE);
-	if (n < 18)
+	if (color < 18)
 		return (CORAL);
 	else
-		return (0x000000 << (n % 20));
+		return (0x000000 << (color % 20));
 }
 
 void	julia_calculus(t_mlx *mlx)
@@ -45,15 +45,15 @@ void	julia_calculus(t_mlx *mlx)
 	mlx->y = 0;
 	while (mlx->y < WIN_HEIGHT)
 	{
-		mlx->c_imaginary = mlx->imaginary_number_max - mlx->y * mlx->zoom_imaginary_number;
+		mlx->c_imaginary = mlx->y_axis_max - mlx->y * mlx->pixel_length_y;
 		mlx->x = 0;
 		while (mlx->x < WIN_WIDTH)
 		{
-			mlx->c_real = mlx->real_number_min + mlx->x * mlx->zoom_real_number;
+			mlx->c_real = mlx->x_axis_min + mlx->x * mlx->pixel_length_x;
 			mlx->z_real = mlx->c_real;
 			mlx->z_imaginary = mlx->c_imaginary;
-			mlx->n = 0;
-			while (mlx->n++ < mlx->iterations)
+			mlx->color = 0;
+			while (mlx->color++ < mlx->iterations)
 			{
 				mlx->z_real_number_2 = mlx->z_real * mlx->z_real;
 				mlx->z_imaginary_number_2 = mlx->z_imaginary * mlx->z_imaginary;
@@ -62,7 +62,7 @@ void	julia_calculus(t_mlx *mlx)
 				mlx->z_imaginary = 2 * mlx->z_real * mlx->z_imaginary + mlx->julia_c_imaginary;		//Tämä on mouse_move_c value 
 				mlx->z_real = mlx->z_real_number_2 - mlx->z_imaginary_number_2 + mlx->julia_c_real;	//Tämä myös
 			}																						//mlx->mouse_imaginary;
-			put_pixel_in_image(mlx->image, mlx->x, mlx->y, colour_julia(mlx->n));					//mlx->mouse_real; ??!?!?
+			color_pixel_in_image(mlx->image, mlx->x, mlx->y, colour_julia(mlx->color));					//mlx->mouse_real; ??!?!?
 			mlx->x++;
 		}
 		mlx->y++;

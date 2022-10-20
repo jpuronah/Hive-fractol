@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:18:34 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 11:59:54 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 16:47:57 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,17 +97,21 @@ typedef struct s_mlx
 	int					x_offset;
 	int					y_offset;
 
+	int					y;
+	int					x;
+	int					color;
 	unsigned int		iterations;
-	float				real_number_min;
-	float				real_number_max;
-	float				imaginary_number_min;
-	float				imaginary_number_max;
 
-	float				zoom_real_number;		// ZOOM X ASKELI
-	float				zoom_imaginary_number;	// ZOOM Y AKSELI
+	float				pixel_length_x;	// ZOOM X ASKELI
+	float				pixel_length_y;	// ZOOM Y AKSELI
+
+	float				x_axis_min;
+	float				x_axis_max;
+	float				y_axis_min;
+	float				y_axis_max;
 
 	float				z_imaginary_number_2;
-	float				z_real_number_2;
+	float				z_real_number_2;//vittuun
 	float				c_imaginary;
 	float				z_imaginary;
 	float				c_real;
@@ -115,11 +119,11 @@ typedef struct s_mlx
 	float				julia_c_imaginary;
 	float				julia_c_real;
 
-	float				mandelbrot_c_imaginary;
+	/*float				mandelbrot_c_imaginary;
 	float				mandelbrot_c_real;
 
 	float				third_c_imaginary;
-	float				third_c_real;
+	float				third_c_real;*/
 
 	/*long double			real_number_min;
 	long double			real_number_max;
@@ -143,12 +147,6 @@ typedef struct s_mlx
 
 	long double			third_c_imaginary;
 	long double			third_c_real;*/
-
-	unsigned int		y;
-	unsigned int		x;
-	unsigned int		n;
-
-	int					mouse_move;
 }				t_mlx;
 
 /* --------------------------- Main ----------------------------------------- */
@@ -166,7 +164,7 @@ void		menu(t_mlx *mlx);
 t_image		*new_image(t_mlx mlx);
 t_image		*delete_image(t_mlx mlx, t_image *img);
 void		clear_image(t_image *image);
-void		put_pixel_in_image(t_image *image, int x, int y, int color);
+void		color_pixel_in_image(t_image *image, int x, int y, int color);
 
 /* -------------------------- Controls -------------------------------------- */
 
