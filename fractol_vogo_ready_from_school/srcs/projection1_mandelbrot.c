@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:42:56 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 17:27:12 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 18:12:20 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,17 @@ static int	set_colour(int color)
 	return (0);
 }
 
+/* Iterations measure, how fast the single
+	pixel value will 'blow up' towards infinity*/
 static void	run_fractal_equation_mandelbrot(t_mlx *mlx)
 {
 	float	tmp;
 
+// zreal = x;
+// zimag = y;
+//		(x, y);
+//	mlx.z_real = mlx.constant_x;
+//	mlx.z_imaginary = mlx.constant_y;
 	tmp = 0.0;
 	while (mlx->color++ < mlx->iterations)
 	{
@@ -94,6 +101,11 @@ static void	run_fractal_equation_mandelbrot(t_mlx *mlx)
 		if (((mlx->z_real * mlx->z_real) + 
 			(mlx->z_imaginary * mlx->z_imaginary)) > 4)
 			break ;
+	}
+	if (mlx->color == 26)
+	{
+		printf("x: %d, y: %d, color: %d\n", mlx->x, mlx->y, mlx->color);
+		printf("real2: %f, imag2: %f\n", (mlx->z_real * mlx->z_real), (mlx->z_imaginary * mlx->z_imaginary));
 	}
 }
 
