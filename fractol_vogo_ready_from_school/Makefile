@@ -6,7 +6,7 @@
 #    By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/19 15:44:35 by jpuronah          #+#    #+#              #
-#    Updated: 2022/10/20 11:11:17 by jpuronah         ###   ########.fr        #
+#    Updated: 2022/10/20 17:37:34 by jpuronah         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJECTIVES = $(SOURCES:.c=.o)
 DIR_S = srcs
 DIR_O = obj
 LIBFT = ./libft/
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -Wall -Wextra -Werror -Wpedantic -Wunused -Wconversion -Wunreachable-code -Wtype-limits
 MLX = -L /usr/local/lib -lmlx -I /usr/local/include
 FRAMEWORK = -framework OpenGL -framework AppKit
 LINKSHOME = -I /usr/X11/include -g -L /usr/X11/lib -lX11 -lmlx -lXext

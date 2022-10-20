@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:18:34 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 17:05:12 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 17:31:29 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,6 @@ typedef struct s_mlx
 	t_image		*image;
 
 	int					first_round;
-	//int					mouse_x;
-	//int					mouse_y;
 	int					fractal_type;
 	int					x_offset;
 	int					y_offset;
@@ -102,18 +100,11 @@ typedef struct s_mlx
 	float				y_axis_min;
 	float				y_axis_max;
 
-	//float				z_imaginary_number_2;
-	//float				z_real_number_2;
-
 	float				constant_y;
-	//float				c_imaginary;
-	
 	float				constant_x;
-	//float				c_real;
 
 	float				z_imaginary;
 	//float				z_imaginary;
-
 	float				z_real;
 	//float				z_real;
 
