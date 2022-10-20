@@ -6,38 +6,148 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:42:56 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/19 23:59:19 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 11:41:34 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+/*
+t_palette	*get_palettes(void)
+{
+	static t_palette	array[5];
 
+	array[0] =
+		(t_palette){5, 0, {0x7F1637, 0x047878, 0xFFB733, 0xF57336, 0xC22121}};
+	array[1] =
+		(t_palette){5, 0, {0x0D1C33, 0x17373C, 0x2B6832, 0x4F9300, 0xA1D700}};
+	array[2] =
+		(t_palette){5, 0, {0x002F2F, 0x046380, 0xEFECCA, 0xA7A37E, 0xE6E2AF}};
+	array[3] =
+		(t_palette){7, 10, {0xFF0000, 0xFFFF00, 0x00FF00, 0x00FFFF,
+			0x0000FF, 0xFF00FF, 0xFF0000}};
+	array[4] = (t_palette){0, 0, {0}};
+	return (array);
+}
+*/
+
+/*
 static int	colour(int n)
 {
 	if (n >= 25)
-		return (LEMONCHIFFON);
+		return (BLACK);
+	if (n < 1)
+		return (HOTPINK);
+	if (n < 2)
+		return (HOTPINK);
+	if (n < 3)
+		return (HOTPINK);
+	if (n < 4)
+		return (HOTPINK);
 	if (n < 5)
+		return (HOTPINK);
+	if (n < 6)
 		return (HOTPINK);
 	if (n < 7)
 		return (FIREBRICK);
+	if (n < 8)
+		return (HOTPINK);
 	if (n < 9)
 		return (BLUE);
-	if (n < 2)
-		return (GRAY);
+	if (n < 10)
+		return (HOTPINK);
 	if (n < 11)
 		return (GREEN);
+	if (n < 12)
+		return (HOTPINK);
 	if (n < 13)
 		return (PURPLE);
+	if (n < 14)
+		return (HOTPINK);
 	if (n < 15)
 		return (RED);
+	if (n < 16)
+		return (HOTPINK);
 	if (n < 17)
 		return (ALICEBLUE);
+	if (n < 18)
+		return (HOTPINK);
 	if (n < 19)
 		return (CORAL);
+	if (n < 20)
+		return (HOTPINK);
 	if (n < 21)
 		return (WHITE);
 	else
+		return (LEMONCHIFFON);
+	return (0);
+}*/
+
+static int	colour(int n)
+{
+	if (n >= 31)
 		return (BLACK);
+	if (n < 1)
+		return (A);
+	if (n < 2)
+		return (B);
+	if (n < 3)
+		return (C);
+	if (n < 4)
+		return (D);
+	if (n < 5)
+		return (E);
+	if (n < 6)
+		return (F);
+	if (n < 7)
+		return (G);
+	if (n < 8)
+		return (H);
+	if (n < 9)
+		return (I);
+	if (n < 10)
+		return (J);
+	if (n < 11)
+		return (K);
+	if (n < 12)
+		return (L);
+	if (n < 13)
+		return (M);
+	if (n < 14)
+		return (N);
+	if (n < 15)
+		return (O);
+	if (n < 16)
+		return (P);
+	if (n < 17)
+		return (Q);
+	if (n < 18)
+		return (E);
+	if (n < 19)
+		return (S);
+	if (n < 20)
+		return (T);
+	if (n < 21)
+		return (U);
+	if (n < 22)
+		return (V);
+	if (n < 23)
+		return (W);
+	if (n < 24)
+		return (X);
+	if (n < 25)
+		return (Y);
+	if (n < 26)
+		return (Z);
+	if (n < 27)
+		return (AA);
+	if (n < 28)
+		return (AB);
+	if (n < 29)
+		return (AC);
+	if (n < 30)
+		return (AD);
+	else
+		return (AE);
 	return (0);
 }
 
