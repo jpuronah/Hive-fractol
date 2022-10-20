@@ -3,6 +3,12 @@ SOSSOSSOSSOSSOSSOSSOSSOSSOS
 
  JULIA SEG faulttaa
 
+
+ 	float			z_imaginary;
+	//float			z_imaginary;
+	float			z_real;
+	//float			z_real;
+
 SOSSOSSOSSOSSOSSOSSOSSOSSOS
 
 - Colors Funktio jotenki jiiriin
