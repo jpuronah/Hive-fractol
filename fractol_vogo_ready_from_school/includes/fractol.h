@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:18:34 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 11:38:44 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 11:59:54 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,10 @@ typedef struct s_mlx
 
 	int					fractal_type;
 	int					first_round;
+	int					mouse_x;
+	int					mouse_y;
+	int					x_offset;
+	int					y_offset;
 
 	unsigned int		iterations;
 	float				real_number_min;

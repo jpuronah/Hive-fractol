@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:43:13 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/19 23:58:15 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 12:00:21 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ static t_mlx	init_mlx(char *win_title, int fractal_type)
 	mlx.y = 0;
 	mlx.n = 0;
 	mlx.mouse_move = 0;
+	mlx.mouse_x = 0;
+	mlx.mouse_y = 0;
+	mlx.x_offset = 0;
+	mlx.y_offset = 0;
 	set_grid_values(&mlx, fractal_type);
 	mlx.zoom_real_number = (mlx.real_number_max - mlx.real_number_min) / (WIN_WIDTH - 1);
 	mlx.zoom_imaginary_number = (mlx.imaginary_number_max - mlx.imaginary_number_min) / (WIN_HEIGHT - 1);

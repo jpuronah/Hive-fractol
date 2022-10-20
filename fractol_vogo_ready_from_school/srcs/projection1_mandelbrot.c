@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:42:56 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 11:41:34 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 11:59:38 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,13 +156,18 @@ void	mandelbrot_calculus(t_mlx mlx)
 	clear_image(mlx.image);
 	mlx.x = 0;
 	mlx.y = 0;
+	mlx.x = mlx.mouse_x;
+	mlx.y = mlx.mouse_y;
+	printf("x: %d, y: %d\n", mlx.mouse_x, mlx.mouse_y);
 	while (mlx.y < WIN_HEIGHT)
 	{
-		mlx.c_imaginary = mlx.imaginary_number_max - mlx.y * mlx.zoom_imaginary_number;
+		//mlx.c_imaginary = mlx.imaginary_number_max - mlx.y * mlx.zoom_imaginary_number;
+		mlx.c_imaginary = mlx.imaginary_number_max - (mlx.y + mlx.y_offset) * mlx.zoom_imaginary_number;
 		mlx.x = 0;
 		while (mlx.x < WIN_WIDTH)
 		{
-			mlx.c_real = mlx.real_number_min + mlx.x * mlx.zoom_real_number;
+			//mlx.c_real = mlx.real_number_min + mlx.x * mlx.zoom_real_number;
+			mlx.c_real = mlx.real_number_min + (mlx.x + mlx.x_offset) * mlx.zoom_real_number;
 			mlx.z_real = mlx.c_real;
 			mlx.z_imaginary = mlx.c_imaginary;
 			mlx.n = 0;

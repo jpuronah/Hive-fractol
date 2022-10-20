@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 21:54:44 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/19 23:58:42 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 11:48:51 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,15 @@ static void mouse_zoom(t_mlx *mlx, int key)
 
 int	mouse_actions(int key, int x, int y, t_mlx *mlx)
 {
-	if (x && y)
+	/*if (x && y)
 	{
 		x = 0;
 		y = 0;
+	}*/
+	if (x && y)
+	{
+		mlx->mouse_x = x;
+		mlx->mouse_y = y;
 	}
 	mouse_zoom(mlx, key);
 	mlx->zoom_real_number = (mlx->real_number_max - mlx->real_number_min) / (WIN_WIDTH - 1);

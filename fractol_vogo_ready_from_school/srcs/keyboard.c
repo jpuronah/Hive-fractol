@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:12:21 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 11:11:35 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/20 12:02:39 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,14 @@ int	key_event(int key, t_mlx *mlx)
 		//mlx_destroy_window(mlx->mlxptr, mlx->winptr);
 		//exit(0);
 	}
+	if (key == 65361)
+		mlx->x_offset += 100;
+	if (key == 65363)
+		mlx->x_offset -= 100;
+	if (key == 65362)
+		mlx->y_offset += 100;
+	if (key == 65364)
+		mlx->y_offset -= 100;
 	menu(mlx);
 	return (0);
 }
