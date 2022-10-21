@@ -1,5 +1,9 @@
-FUCK MEE!!!
+ToDo:
 
+- Julia zoom pic update
+- color norme
+- moving pic update
+- 
 
  	float			z_imaginary;
 	//float			z_imaginary;
