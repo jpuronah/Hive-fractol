@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 17:27:13 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/21 12:04:17 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/21 12:23:36 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ void	graphics(t_mlx mlx)
 {
 	if (mlx.first_round == 0)
 		init_fractal(mlx);
-	printf("graphics\n\n\n");
 	mlx_mouse_hook(mlx.winptr, mouse_actions, &mlx);
-	printf("graphics2\n\n\n");
 	mlx_key_hook(mlx.winptr, key_event, &mlx);
 	mlx_loop(mlx.mlxptr);
 }

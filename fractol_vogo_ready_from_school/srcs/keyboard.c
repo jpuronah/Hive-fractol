@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:12:21 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/21 12:05:01 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/21 12:25:54 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	key_event(int key, t_mlx *mlx)
 		if (mlx->x_offset > 800000 || mlx->x_offset < -800000)
 			mlx->x_offset = 0;
 	}
-	//menu(mlx);
 	if (mlx->fractal_type == 1)
 		mandelbrot_calculus(*mlx);
 	if (mlx->fractal_type == 2)

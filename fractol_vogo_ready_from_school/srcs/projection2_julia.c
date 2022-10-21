@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:43:16 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/21 12:03:20 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/21 12:25:14 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ static void	run_fractal_equation_julia(t_mlx *mlx)
 	{
 		tmp = mlx->y_pixel;
 		mlx->y_pixel = 2 * mlx->x_pixel * mlx->y_pixel + mlx->constant_y_julia;
-		mlx->x_pixel = (mlx->x_pixel * mlx->x_pixel) - (tmp * tmp) + mlx->constant_x_julia;
-		if (((mlx->x_pixel * mlx->x_pixel) + 
-			(mlx->y_pixel * mlx->y_pixel)) > 8)
+		mlx->x_pixel = (mlx->x_pixel * mlx->x_pixel)
+			- (tmp * tmp) + mlx->constant_x_julia;
+		if (((mlx->x_pixel * mlx->x_pixel)
+				+ (mlx->y_pixel * mlx->y_pixel)) > 4)
 			break ;
 	}
 }
@@ -48,7 +49,8 @@ void	julia_calculus(t_mlx *mlx)
 			mlx->y_pixel = mlx->constant_y;
 			mlx->colour = 0;
 			run_fractal_equation_julia(mlx);
-			color_pixel_in_image(mlx->image, mlx->x, mlx->y, set_colour(mlx->colour));
+			color_pixel_in_image(mlx->image,
+				mlx->x, mlx->y, set_colour(mlx->colour));
 			mlx->x++;
 		}
 		mlx->y++;
@@ -63,10 +65,9 @@ int	julia_coordinates(int x, int y, t_mlx *mlx)
 	mlx->constant_y_julia = 0.0;
 	if ((x > 0 && x < WIN_WIDTH) && (y > 0 && y < WIN_HEIGHT))
 	{
-		mlx->constant_y_julia = (y - WIN_HEIGHT * 0.5) / (WIN_HEIGHT * 0.5f);
-		mlx->constant_x_julia = (x - WIN_WIDTH * 0.5) / (WIN_WIDTH * 0.5f);
+		mlx->constant_y_julia = (y - WIN_HEIGHT * 0.25) / (WIN_HEIGHT * 0.25);
+		mlx->constant_x_julia = (x - WIN_WIDTH * 0.25) / (WIN_WIDTH * 0.25);
 	}
 	julia_calculus(mlx);
 	return (0);
 }
-

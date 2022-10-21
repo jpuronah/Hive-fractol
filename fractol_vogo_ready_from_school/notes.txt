@@ -1,9 +1,7 @@
 ToDo:
 
-- Julia zoom pic update
-- color norme
-- moving pic update
-- 
+- Check everything again
+- julia mouse boundaries
 
  	float			z_imaginary;
 	//float			z_imaginary;

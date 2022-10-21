@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:42:56 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/21 11:19:12 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/21 12:28:55 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,33 @@ static void	run_fractal_equation_mandelbrot(t_mlx *mlx)
 	{
 		tmp = mlx->y_pixel;
 		mlx->y_pixel = 2 * mlx->x_pixel * mlx->y_pixel + mlx->constant_y;
-		mlx->x_pixel = (mlx->x_pixel * mlx->x_pixel) - (tmp * tmp) + mlx->constant_x;
-		if (((mlx->x_pixel * mlx->x_pixel) + 
-			(mlx->y_pixel * mlx->y_pixel)) > 4)
+		mlx->x_pixel = (mlx->x_pixel * mlx->x_pixel)
+			- (tmp * tmp) + mlx->constant_x;
+		if (((mlx->x_pixel * mlx->x_pixel)
+				+ (mlx->y_pixel * mlx->y_pixel)) > 4)
 			break ;
 	}
 }
 
 void	mandelbrot_calculus(t_mlx mlx)
 {
-	printf("mandelbrot_calculus\n");
 	clear_image(mlx.image);
 	mlx.y = 0;
 	while (mlx.y < WIN_HEIGHT)
 	{
 		mlx.x = 0;
-		mlx.constant_y = mlx.y_axis_min + (mlx.y + mlx.y_offset) * mlx.pixel_length_y;
+		mlx.constant_y = mlx.y_axis_min
+			+ (mlx.y + mlx.y_offset) * mlx.pixel_length_y;
 		while (mlx.x < WIN_WIDTH)
 		{
-			mlx.constant_x = mlx.x_axis_min + (mlx.x + mlx.x_offset) * mlx.pixel_length_x;
+			mlx.constant_x = mlx.x_axis_min
+				+ (mlx.x + mlx.x_offset) * mlx.pixel_length_x;
 			mlx.x_pixel = mlx.constant_x;
 			mlx.y_pixel = mlx.constant_y;
 			mlx.colour = 0;
 			run_fractal_equation_mandelbrot(&mlx);
-			color_pixel_in_image(mlx.image, mlx.x, mlx.y, set_colour(mlx.colour));
+			color_pixel_in_image(mlx.image,
+				mlx.x, mlx.y, set_colour(mlx.colour));
 			mlx.x++;
 		}
 		mlx.y++;

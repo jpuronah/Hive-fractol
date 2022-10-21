@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:43:13 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/21 12:06:23 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/21 12:21:48 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	set_grid_values(t_mlx *mlx, int fractal_type)
 {
 	if (fractal_type == 2)
 	{
-		mlx->iterations = 22;
+		mlx->iterations = 25;
 		mlx->x_axis_min = -2;
 		mlx->x_axis_max = 2;
 		mlx->y_axis_min = -2;
@@ -24,7 +24,7 @@ static void	set_grid_values(t_mlx *mlx, int fractal_type)
 	}
 	else
 	{
-		mlx->iterations = 22;
+		mlx->iterations = 25;
 		mlx->x_axis_min = -2;
 		mlx->x_axis_max = 1;
 		mlx->y_axis_min = -1.12;

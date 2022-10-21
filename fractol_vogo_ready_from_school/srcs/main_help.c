@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 18:31:11 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/19 23:57:58 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/21 12:29:52 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	check_fractal_type(int ac, char **av)
 			fractal_type = 1;
 		if (ft_strcmp(av[1], "julia") == 0)
 			fractal_type = 2;
-		if (ft_strcmp(av[1], "third") == 0)
+		if (ft_strcmp(av[1], "tricorn") == 0)
 			fractal_type = 3;
 	}
 	if (ac != 2 || fractal_type == 0)
