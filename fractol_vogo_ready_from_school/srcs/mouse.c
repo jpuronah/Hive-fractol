@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 21:54:44 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/21 11:33:22 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/21 11:55:19 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ int	mouse_actions(int key, int x, int y, t_mlx *mlx)
 	printf("mouse_actions\n");
 	printf("%d, %d\n", x, y);
 	printf("%ld\n", 1L<<6);
-	if (x && y)
+	/*if (x && y)
 	{
 		x = 0;
 		y = 0;
-	}
+	}*/
 	mouse_zoom(mlx, key);
 	mlx->pixel_length_x
 		= (mlx->x_axis_max - mlx->x_axis_min) / (WIN_WIDTH - 1);
@@ -48,6 +48,8 @@ int	mouse_actions(int key, int x, int y, t_mlx *mlx)
 		= (mlx->y_axis_max - mlx->y_axis_min) / (WIN_HEIGHT - 1);
 	if (mlx->fractal_type == 1)
 		mandelbrot_calculus(*mlx);
+	if (mlx->fractal_type == 2)
+		julia_coordinates(x, y, mlx);
 	if (mlx->fractal_type == 2)
 		mlx_hook(mlx->winptr, 6, 0, &julia_coordinates, mlx);
 	if (mlx->fractal_type == 3)
