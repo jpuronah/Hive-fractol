@@ -32,6 +32,53 @@
 # define AE 0x5d4c86
 
 
+static int	set_colour4(int colour)
+{
+	if (colour == 32)
+		return (LEMONCHIFFON);
+	if (colour == 33)
+		return (HOTPINK);
+	if (colour == 34)
+		return (FIREBRICK);
+	if (colour == 35)
+		return (CORAL);
+	if (colour == 36)
+		return (ALICEBLUE);
+	if (colour == 37)
+		return (RED);
+	if (colour == 38)
+		return (PURPLE);
+	if (colour == 39)
+		return (GREEN);
+	if (colour == 40)
+		return (BLUE);
+	return (0);
+}
+
+static int	set_colour3(int colour)
+{
+	if (colour == 23)
+		return (W);
+	if (colour == 24)
+		return (X);
+	if (colour == 25)
+		return (Y);
+	if (colour == 26)
+		return (Z);
+	if (colour == 27)
+		return (AA);
+	if (colour == 28)
+		return (AB);
+	if (colour == 29)
+		return (AC);
+	if (colour == 30)
+		return (AD);
+	if (colour == 31)
+		return (AE);
+	return (0);
+}
+
+
 /*static int	colour(int n)
 {
 	if (n >= 25)

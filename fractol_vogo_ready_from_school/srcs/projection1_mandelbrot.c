@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:42:56 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/21 10:45:57 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/21 11:19:12 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static void	run_fractal_equation_mandelbrot(t_mlx *mlx)
 
 void	mandelbrot_calculus(t_mlx mlx)
 {
+	printf("mandelbrot_calculus\n");
 	clear_image(mlx.image);
 	mlx.y = 0;
 	while (mlx.y < WIN_HEIGHT)

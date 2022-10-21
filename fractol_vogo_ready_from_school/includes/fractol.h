@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:18:34 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/21 10:45:00 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/21 10:55:52 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,6 @@ typedef struct s_image
 	int			line_bytes;
 	int			endian;
 }				t_image;
-
-/*
-typedef struct s_zoom
-{
-	float	pixel_length_x;
-	float	pixel_length_y;
-	float	constant_y_julia;
-	float	constant_x_julia;
-	float	x_axis_min;
-	float	x_axis_max;
-	float	y_axis_min;
-	float	y_axis_max;
-}			t_zoom;
-*/
 
 typedef struct s_mlx
 {
@@ -104,17 +90,9 @@ void		color_pixel_in_image(t_image *image, int x, int y, int color);
 int			key_event(int key, t_mlx *mlx);
 int			mouse_actions(int key, int x, int y, t_mlx *mlx);
 
-/* ------------------------- Fractals & Calculus ---------------------------- */
+/* ---------------------------- Fractals ------------------------------------ */
 
 void		mandelbrot_calculus(t_mlx mlx);
 void		optional_fractal_calculus(t_mlx mlx);
 int			julia_coordinates(int x, int y, t_mlx *mlx);
-
-//void		optional_fractal_calculus_mouse_move(t_mlx mlx);
-//int			mouse_events_third(int x, int y, t_mlx *mlx);
-//void		julia_init(t_mlx *mlx);
-//void		julia_calculus(t_mlx *mlx);
-//void		julia_calculus(t_mlx *mlx, float a, float b);
-//int			mouse_events_mandelbrot(int x, int y, t_mlx *mlx);
-//void		mandelbrot_calculus_mouse_move(t_mlx mlx);
 #endif
