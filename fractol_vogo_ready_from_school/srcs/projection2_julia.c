@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:43:16 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/21 11:53:43 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/21 12:03:20 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ void	julia_calculus(t_mlx *mlx)
 
 int	julia_coordinates(int x, int y, t_mlx *mlx)
 {
-	printf("julia_coordinates\n");
-	printf("%d, %d\n", x, y);
 	mlx->constant_x_julia = 0.0;
 	mlx->constant_y_julia = 0.0;
 	if ((x > 0 && x < WIN_WIDTH) && (y > 0 && y < WIN_HEIGHT))

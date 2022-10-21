@@ -6,15 +6,17 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:12:21 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/21 11:38:16 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/21 12:05:01 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+/*
+**	Key events, exit and movement
+*/
 void	menu(t_mlx *mlx)
 {
-	printf("menu\n");
 	mlx_string_put(mlx->mlxptr, mlx->winptr, 20, 20,
 		WHITE, "Press 'ESC' to EXIT PROGRAM");
 }
@@ -28,11 +30,7 @@ static int	exit_fdf(t_mlx *mlx)
 
 int	key_event(int key, t_mlx *mlx)
 {
-	printf("key_event\n");
-	printf("key: %d\n", key);
 	if (key == 53)
-		exit_fdf(mlx);
-	if (key == 65307)
 		exit_fdf(mlx);
 	if (mlx->fractal_type != 2)
 	{
@@ -49,8 +47,7 @@ int	key_event(int key, t_mlx *mlx)
 		if (mlx->x_offset > 800000 || mlx->x_offset < -800000)
 			mlx->x_offset = 0;
 	}
-	printf("%d\n", mlx->fractal_type);
-	menu(mlx);
+	//menu(mlx);
 	if (mlx->fractal_type == 1)
 		mandelbrot_calculus(*mlx);
 	if (mlx->fractal_type == 2)
