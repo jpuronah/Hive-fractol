@@ -1,255 +1,228 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colors.c                                           :+:      :+:    :+:   */
+/*   colours.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 16:56:33 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 22:22:41 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/21 10:44:06 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-static int	color_palette_a(int color)
+/*int	set_colour3(int colour)
 {
-	printf("%d\n", color);
-	if (color >= 31)
-		return (BLACK);
-	if (color == 1)
-		return (A);
-	if (color == 2)
-		return (B);
-	if (color == 3)
-		return (C);
-	if (color == 4)
-		return (D);
-	if (color == 5)
-		return (E);
-	if (color == 6)
-		return (F);
-	if (color == 7)
-		return (G);
-	if (color == 8)
-		return (H);
-	if (color == 9)
-		return (I);
-	if (color == 10)
-		return (J);
-	return (-1);
-}
-
-static int	color_palette_b(int color)
-{
-	printf("%d\n", color);
-	if (color == 11)
-		return (K);
-	if (color == 12)
-		return (L);
-	if (color == 13)
-		return (M);
-	if (color == 14)
-		return (N);
-	if (color == 15)
-		return (O);
-	if (color == 16)
-		return (P);
-	if (color == 17)
-		return (Q);
-	if (color == 18)
-		return (E);
-	if (color == 19)
-		return (S);
-	if (color == 20)
-		return (T);
-	if (color == 21)
-		return (U);
-	if (color == 22)
-		return (V);
-	return (-1);
-}
-
-static int	color_palette_c(int color)
-{
-	printf("%d\n", color);
-	if (color == 23)
+	if (colour == 23)
 		return (W);
-	if (color == 24)
+	if (colour == 24)
 		return (X);
-	if (color == 25)
+	if (colour == 25)
 		return (Y);
-	if (color == 26)
+	if (colour == 26)
 		return (Z);
-	if (color == 27)
+	if (colour == 27)
 		return (AA);
-	if (color == 28)
+	if (colour == 28)
 		return (AB);
-	if (color == 29)
+	if (colour == 29)
 		return (AC);
-	if (color == 30)
+	if (colour == 30)
 		return (AD);
-	else
+	if (colour == 31)
 		return (AE);
+	if (colour > 31) //31
+		return (BLACK);
+	return (0);
+}*/
+# define WHITE 0xFFFFFF
+# define BLACK 0x000000
+# define BLUE 0x0000FF
+# define GRAY 0x808080
+# define GREEN 0x008000
+# define PURPLE 0x800080
+# define RED 0xFF0000
+# define ALICEBLUE 0xF0F8FF
+# define CORAL 0xFF7F50
+# define FIREBRICK 0xB22222
+# define HOTPINK 0xFF69B4
+# define LEMONCHIFFON 0xFFFACD
+
+int	set_colour4(int colour)
+{
+	if (colour == 32)
+		return (LEMONCHIFFON);
+	if (colour == 33)
+		return (HOTPINK);
+	if (colour == 34)
+		return (FIREBRICK);
+	if (colour == 35)
+		return (CORAL);
+	if (colour == 36)
+		return (ALICEBLUE);
+	if (colour == 37)
+		return (RED);
+	if (colour == 38)
+		return (PURPLE);
+	if (colour == 39)
+		return (GREEN);
+	if (colour == 40)
+		return (BLUE);
+	return (0);
 }
 
-int	set_colour(int color)
+int	set_colour3(int colour)
 {
-	int	ret1;
-	int	ret2;
-	int	ret3;
+	if (colour == 23)
+		return (W);
+	if (colour == 24)
+		return (X);
+	if (colour == 25)
+		return (Y);
+	if (colour == 26)
+		return (Z);
+	if (colour == 27)
+		return (AA);
+	if (colour == 28)
+		return (AB);
+	if (colour == 29)
+		return (AC);
+	if (colour == 30)
+		return (AD);
+	if (colour == 31)
+		return (AE);
+	return (0);
+}
 
-	ret1 = 0;
-	ret2 = 0;
-	ret3 = 0;
-	ret1 = color_palette_a(color);
-	ret2 = color_palette_b(color);
-	ret3 = color_palette_c(color);
-	printf("%d, %d, %d, %d\n", color, ret1, ret2, ret3);
-	if (ret1 > 0)
-		return (ret1);
-	if (ret2 > 0)
-		return (ret2);
-	if (ret3 > 0)
-		return (ret3);
+int	set_colour2(int colour)
+{
+	if (colour == 10)
+		return (J);
+	if (colour == 11)
+		return (K);
+	if (colour == 12)
+		return (L);
+	if (colour == 13)
+		return (M);
+	if (colour == 14)
+		return (N);
+	if (colour == 15)
+		return (O);
+	if (colour == 16)
+		return (P);
+	if (colour == 17)
+		return (Q);
+	if (colour == 18)
+		return (E);
+	if (colour == 19)
+		return (S);
+	if (colour == 20)
+		return (T);
+	if (colour == 21)
+		return (U);
+	if (colour == 22)
+		return (V);
+	return (0);
+}
+
+int	set_colour(int colour)
+{
+	int ret;
+
+	ret = 0;
+	if (colour == 1)
+		return (A);
+	if (colour == 2)
+		return (B);
+	if (colour == 3)
+		return (C);
+	if (colour == 4)
+		return (D);
+	if (colour == 5)
+		return (E);
+	if (colour == 6)
+		return (F);
+	if (colour == 7)
+		return (G);
+	if (colour == 8)
+		return (H);
+	if (colour == 9)
+		return (I);
+	ret = set_colour2(colour);
+	//ret = set_colour3(colour);
+	//ret = set_colour4(colour);
+	if (colour > 40) //31
+		return (BLACK);
+	return (ret);
 }
 
 /*
-int	set_colour(int color)
+int	set_colour_julia(int colour)
 {
-	if (color >= 31)
+	if (colour >= 40)
 		return (BLACK);
-	if (color == 1)
+	if (colour == 1)
 		return (A);
-	if (color == 2)
+	if (colour == 2)
 		return (B);
-	if (color == 3)
+	if (colour == 3)
 		return (C);
-	if (color == 4)
+	if (colour == 4)
 		return (D);
-	if (color == 5)
+	if (colour == 5)
 		return (E);
-	if (color == 6)
+	if (colour == 6)
 		return (F);
-	if (color == 7)
+	if (colour == 7)
 		return (G);
-	if (color == 8)
+	if (colour == 8)
 		return (H);
-	if (color == 9)
+	if (colour == 9)
 		return (I);
-	if (color == 10)
+	if (colour == 10)
 		return (J);
-	if (color == 11)
+	if (colour == 11)
 		return (K);
-	if (color == 12)
+	if (colour == 12)
 		return (L);
-	if (color == 13)
+	if (colour == 13)
 		return (M);
-	if (color == 14)
+	if (colour == 14)
 		return (N);
-	if (color == 15)
+	if (colour == 15)
 		return (O);
-	if (color == 16)
+	if (colour == 16)
 		return (P);
-	if (color == 17)
+	if (colour == 17)
 		return (Q);
-	if (color == 18)
+	if (colour == 18)
 		return (E);
-	if (color == 19)
+	if (colour == 19)
 		return (S);
-	if (color == 20)
+	if (colour == 20)
 		return (T);
-	if (color == 21)
+	if (colour == 21)
 		return (U);
-	if (color == 22)
+	if (colour == 22)
 		return (V);
-	if (color == 23)
+	if (colour == 23)
 		return (W);
-	if (color == 24)
+	if (colour == 24)
 		return (X);
-	if (color == 25)
+	if (colour == 25)
 		return (Y);
-	if (color == 26)
+	if (colour == 26)
 		return (Z);
-	if (color == 27)
+	if (colour == 27)
 		return (AA);
-	if (color == 28)
+	if (colour == 28)
 		return (AB);
-	if (color == 29)
+	if (colour == 29)
 		return (AC);
-	if (color == 30)
+	if (colour == 30)
 		return (AD);
 	else
 		return (AE);
 	return (0);
 }*/
-
-
-int	set_colour_julia(int color)
-{
-	if (color >= 40)
-		return (BLACK);
-	if (color == 1)
-		return (A);
-	if (color == 2)
-		return (B);
-	if (color == 3)
-		return (C);
-	if (color == 4)
-		return (D);
-	if (color == 5)
-		return (E);
-	if (color == 6)
-		return (F);
-	if (color == 7)
-		return (G);
-	if (color == 8)
-		return (H);
-	if (color == 9)
-		return (I);
-	if (color == 10)
-		return (J);
-	if (color == 11)
-		return (K);
-	if (color == 12)
-		return (L);
-	if (color == 13)
-		return (M);
-	if (color == 14)
-		return (N);
-	if (color == 15)
-		return (O);
-	if (color == 16)
-		return (P);
-	if (color == 17)
-		return (Q);
-	if (color == 18)
-		return (E);
-	if (color == 19)
-		return (S);
-	if (color == 20)
-		return (T);
-	if (color == 21)
-		return (U);
-	if (color == 22)
-		return (V);
-	if (color == 23)
-		return (W);
-	if (color == 24)
-		return (X);
-	if (color == 25)
-		return (Y);
-	if (color == 26)
-		return (Z);
-	if (color == 27)
-		return (AA);
-	if (color == 28)
-		return (AB);
-	if (color == 29)
-		return (AC);
-	if (color == 30)
-		return (AD);
-	else
-		return (AE);
-	return (0);
-}

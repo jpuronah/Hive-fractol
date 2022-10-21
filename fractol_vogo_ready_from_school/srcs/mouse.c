@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 21:54:44 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 22:06:35 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/21 10:34:59 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	mouse_zoom(t_mlx *mlx, int key)
 {
+	printf("mouse_zoom\n");
 	if (key == 4)
 	{
-		printf("4:%d\n\n\n\n\n\n\n\n\n\n\n\n\n\n", key);
 		mlx->x_axis_min *= 0.95;
 		mlx->x_axis_max *= 0.95;
 		mlx->y_axis_min *= 0.95;
@@ -24,7 +24,6 @@ static void	mouse_zoom(t_mlx *mlx, int key)
 	}
 	if (key == 5)
 	{
-		printf("5 %d\n\n\n\n\n\n\n\n\n\n\n\n\n\n", key);
 		mlx->x_axis_min *= 1.05;
 		mlx->x_axis_max *= 1.05;
 		mlx->y_axis_min *= 1.05;
@@ -34,6 +33,8 @@ static void	mouse_zoom(t_mlx *mlx, int key)
 
 int	mouse_actions(int key, int x, int y, t_mlx *mlx)
 {
+	printf("mouse_actions\n");
+	printf("%ld\n", 1L<<6);
 	if (x && y)
 	{
 		x = 0;
@@ -47,7 +48,7 @@ int	mouse_actions(int key, int x, int y, t_mlx *mlx)
 	if (mlx->fractal_type == 1)
 		mandelbrot_calculus(*mlx);
 	if (mlx->fractal_type == 2)
-		mlx_hook(mlx->winptr,6, 0, julia_coordinates, mlx);
+		mlx_hook(mlx->winptr, 6, 0, julia_coordinates, mlx);
 	if (mlx->fractal_type == 3)
 		optional_fractal_calculus(*mlx);
 	return (0);

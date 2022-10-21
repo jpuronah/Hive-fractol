@@ -1,0 +1,23 @@
+General Instructions
+This project will be corrected by humans only. So, feel free to organize and name your files as you wish, but within the constraints listed here.
+• The executable file must be named fractol.
+• You must submit a Makefile.
+• Your Makefile must compile the project and must contain the usual rules. It must not recompile and re-link the program unless necessary.
+• If you are clever, you will use your library for your fractol. Submit also your libft folder, including its own Makefile at the root of your repository. Your fractol Makefile will have to compile the library, and then compile your project.
+• You cannot use global variables.
+• Your project must follow the Norm.
+• You have to handle errors carefully. In no way can your program quit in an unex- pected manner (Segmentation fault, bus error, double free, etc).
+• Your program cannot have memory leaks.
+• You’ll have to submit a file named author containing your username followed by a
+’\n’ at the root of your repository.
+• You must use the miniLibX. Either in the version that is available on the system, or from its sources. If you choose to work with the sources, you will need to apply the same rules for your libft as those written above.
+
+Mandatory part
+• Your software should offer at least 3 different types of fractals, including the Julia set and the Mandelbrot set. The third fractal (and the optional additional ones) can be whatever you want.
+• It must be possible to make the parameter of the Julia set vary only with the mouse (without clicking). For the other types of fractal, the decision is yours.
+• The mouse wheel zooms in and out, almost infinitely (within the limits of the computer). This is the very principle of fractals.
+• You must use at least a few colors to show the depth of each fractal. It’s even better if you hack away on psychedelic effects.
+• A parameter is passed on the command line to define what type of fractal will be viewed. If no parameter is provided, or if the parameter is invalid, the program displays a list of available parameters and exits properly.
+As for the graphic representation: • ESC will exit the program.
+• The use of images of the minilibX is strongly recommended.
+

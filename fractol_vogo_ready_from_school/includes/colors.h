@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/20 21:01:36 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 21:57:02 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/21 10:46:49 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@
 # define AE 0x5d4c86
 
 int	set_colour(int color);
-int	set_colour_julia(int color);
+//int	set_colour_julia(int color);
 
 #endif

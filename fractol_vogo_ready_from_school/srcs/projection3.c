@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:43:52 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 22:02:08 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/21 10:46:00 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static void	run_fractal_equation_third(t_mlx *mlx)
 	float	tmp;
 
 	tmp = 0.0;
-	while (mlx->color++ < mlx->iterations)
+	while (mlx->colour++ < mlx->iterations)
 	{
-		tmp = mlx->z_imaginary;
-		mlx->z_imaginary = -2 * mlx->z_real * mlx->z_imaginary + mlx->constant_y;
-		mlx->z_real = (mlx->z_real * mlx->z_real) - (tmp * tmp) + mlx->constant_x;
-		if (((mlx->z_real * mlx->z_real) + 
-			(mlx->z_imaginary * mlx->z_imaginary)) > 4)
+		tmp = mlx->y_pixel;
+		mlx->y_pixel = -2 * mlx->x_pixel * mlx->y_pixel + mlx->constant_y;
+		mlx->x_pixel = (mlx->x_pixel * mlx->x_pixel) - (tmp * tmp) + mlx->constant_x;
+		if (((mlx->x_pixel * mlx->x_pixel) + 
+			(mlx->y_pixel * mlx->y_pixel)) > 4)
 			break ;
 	}
 }
@@ -44,11 +44,11 @@ void	optional_fractal_calculus(t_mlx mlx)
 		while (mlx.x < WIN_WIDTH)
 		{
 			mlx.constant_x = mlx.x_axis_min + (mlx.x + mlx.x_offset) * mlx.pixel_length_x;
-			mlx.z_real = mlx.constant_x;
-			mlx.z_imaginary = mlx.constant_y;
-			mlx.color = 0;
+			mlx.x_pixel = mlx.constant_x;
+			mlx.y_pixel = mlx.constant_y;
+			mlx.colour = 0;
 			run_fractal_equation_third(&mlx);
-			color_pixel_in_image(mlx.image, mlx.x, mlx.y, set_colour(mlx.color));
+			color_pixel_in_image(mlx.image, mlx.x, mlx.y, set_colour(mlx.colour));
 			mlx.x++;
 		}
 		mlx.y++;

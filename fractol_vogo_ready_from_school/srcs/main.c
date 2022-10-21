@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:43:13 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 17:05:23 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/21 10:45:07 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,17 @@ static void	set_grid_values(t_mlx *mlx, int fractal_type)
 		mlx->iterations = 50;
 		mlx->x_axis_min = -2;
 		mlx->x_axis_max = 1;
-		mlx->y_axis_min = -1.3;
-		mlx->y_axis_max = 1.3;
+		mlx->y_axis_min = -1.12;
+		mlx->y_axis_max = 1.12;
 	}
 }
 
 static void	set_calculus_values(t_mlx mlx)
 {
 	mlx.constant_y = 0;
-	mlx.z_imaginary = 0;
+	mlx.y_pixel = 0;
 	mlx.constant_x = 0;
-	mlx.z_real = 0;
+	mlx.x_pixel = 0;
 	mlx.constant_y_julia = 0;
 	mlx.constant_x_julia = 0;
 }
@@ -53,7 +53,7 @@ static t_mlx	init_mlx(char *win_title, int fractal_type)
 	mlx.x = 0;
 	mlx.y = 0;
 	mlx.first_round = 0;
-	mlx.color = 0;
+	mlx.colour = 0;
 	mlx.x_offset = 0;
 	mlx.y_offset = 0;
 	set_grid_values(&mlx, fractal_type);

@@ -6,24 +6,28 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:43:16 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 22:06:06 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/21 10:46:18 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+/*
+**	Iterations measure, how fast the single
+**	pixel value will 'blow up' towards infinity
+*/
 static void	run_fractal_equation_julia(t_mlx *mlx)
 {
 	float	tmp;
 
 	tmp = 0.0;
-	while (mlx->color++ < mlx->iterations)
+	while (mlx->colour++ < mlx->iterations)
 	{
-		tmp = mlx->z_imaginary;
-		mlx->z_imaginary = 2 * mlx->z_real * mlx->z_imaginary + mlx->constant_y_julia;
-		mlx->z_real = (mlx->z_real * mlx->z_real) - (tmp * tmp) + mlx->constant_x_julia;
-		if (((mlx->z_real * mlx->z_real) + 
-			(mlx->z_imaginary * mlx->z_imaginary)) > 4)
+		tmp = mlx->y_pixel;
+		mlx->y_pixel = 2 * mlx->x_pixel * mlx->y_pixel + mlx->constant_y_julia;
+		mlx->x_pixel = (mlx->x_pixel * mlx->x_pixel) - (tmp * tmp) + mlx->constant_x_julia;
+		if (((mlx->x_pixel * mlx->x_pixel) + 
+			(mlx->y_pixel * mlx->y_pixel)) > 8)
 			break ;
 	}
 }
@@ -40,11 +44,12 @@ void	julia_calculus(t_mlx *mlx)
 		while (mlx->x < WIN_WIDTH)
 		{
 			mlx->constant_x = mlx->x_axis_min + mlx->x * mlx->pixel_length_x;
-			mlx->z_real = mlx->constant_x;
-			mlx->z_imaginary = mlx->constant_y;
-			mlx->color = 0;
+			mlx->x_pixel = mlx->constant_x;
+			mlx->y_pixel = mlx->constant_y;
+			mlx->colour = 0;
 			run_fractal_equation_julia(mlx);
-			color_pixel_in_image(mlx->image, mlx->x, mlx->y, set_colour_julia(mlx->color));
+			color_pixel_in_image(mlx->image, mlx->x, mlx->y, set_colour(mlx->colour));
+			//color_pixel_in_image(mlx->image, mlx->x, mlx->y, set_colour_julia(mlx->color));
 			mlx->x++;
 		}
 		mlx->y++;
@@ -55,6 +60,7 @@ void	julia_calculus(t_mlx *mlx)
 
 int	julia_coordinates(int x, int y, t_mlx *mlx)
 {
+	printf("julia_coordinates\n");
 	mlx->constant_x_julia = 0.0;
 	mlx->constant_y_julia = 0.0;
 	if ((x > 0 && x < WIN_WIDTH) && (y > 0 && y < WIN_HEIGHT))

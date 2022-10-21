@@ -6,20 +6,23 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:18:34 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/20 21:55:52 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/21 10:45:00 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
-# define WIN_WIDTH 400
-# define WIN_HEIGHT 400
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 600
 
 # include "../libft/libft.h"
 # include "../includes/colors.h"
 # include <mlx.h>
 # include <fcntl.h>
 # include <math.h>
+
+
+
 //perse
 # include <stdio.h>
 
@@ -59,7 +62,7 @@ typedef struct s_mlx
 
 	int				y;
 	int				x;
-	int				color;
+	int				colour;
 	unsigned int	iterations;
 
 	float			pixel_length_x;
@@ -73,10 +76,8 @@ typedef struct s_mlx
 	float			constant_y;
 	float			constant_x;
 
-	float			z_imaginary;
-	//float			z_imaginary;
-	float			z_real;
-	//float			z_real;
+	float			y_pixel;
+	float			x_pixel;
 	float			constant_y_julia;
 	float			constant_x_julia;
 }					t_mlx;
