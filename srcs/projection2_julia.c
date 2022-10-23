@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:43:16 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/21 13:35:18 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/23 18:21:00 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	run_fractal_equation_julia(t_mlx *mlx)
 void	julia_calculus(t_mlx *mlx)
 {
 	mlx->y = 0;
-	mlx->x = 0;
+	clear_image(mlx->image);
 	while (mlx->y < WIN_HEIGHT)
 	{
 		mlx->x = 0;
@@ -48,12 +48,13 @@ void	julia_calculus(t_mlx *mlx)
 			mlx->y_pixel = mlx->constant_y;
 			mlx->colour = 0;
 			run_fractal_equation_julia(mlx);
-			mlx_pixel_put(mlx->mlxptr, mlx->winptr,
-				mlx->x, mlx->y, set_colour(mlx->colour));
+			put_pixel_in_image(mlx->image, mlx->x, mlx->y, set_colour(mlx->colour));
+			//mlx_pixel_put(mlx->mlxptr, mlx->winptr, mlx->x, mlx->y, set_colour(mlx->colour));
 			mlx->x++;
 		}
 		mlx->y++;
 	}
+	mlx_put_image_to_window(mlx->mlxptr, mlx->winptr, mlx->image->image, 0, 0);
 	menu(mlx);
 }
 
@@ -61,10 +62,14 @@ int	julia_coordinates(int x, int y, t_mlx *mlx)
 {
 	mlx->constant_x_julia = 0.0;
 	mlx->constant_y_julia = 0.0;
+
+	printf("%f, %f\n", mlx->pixel_length_x, mlx->pixel_length_y);
 	if ((x > 0 && x < WIN_WIDTH) && (y > 0 && y < WIN_HEIGHT))
 	{
-		mlx->constant_y_julia = (y - WIN_HEIGHT * 0.25) / (WIN_HEIGHT * 0.25);
-		mlx->constant_x_julia = (x - WIN_WIDTH * 0.25) / (WIN_WIDTH * 0.25);
+		mlx->constant_y_julia = (y - WIN_HEIGHT * 0.5) / (WIN_HEIGHT * 0.5);
+		mlx->constant_x_julia = (x - WIN_WIDTH * 0.5) / (WIN_WIDTH * 0.5);
+		//mlx->constant_y_julia *= mlx->pixel_length_x / 0.005006;
+		//mlx->constant_x_julia *= mlx->pixel_length_y / 0.006678;
 	}
 	julia_calculus(mlx);
 	return (0);

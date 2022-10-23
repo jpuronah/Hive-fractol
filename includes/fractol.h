@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:18:34 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/21 13:40:25 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/23 18:18:16 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,22 @@
 # include "../libft/libft.h"
 # include "../includes/colors.h"
 # include <mlx.h>
+# include <stdio.h>
+
+typedef struct s_image
+{
+	void		*image;
+	char		*ptr;
+	int			bpp;
+	int			line_bytes;
+	int			endian;
+}				t_image;
 
 typedef struct s_mlx
 {
 	void			*mlxptr;
 	void			*winptr;
+	t_image			*image;
 
 	int				first_round;
 	int				fractal_type;
@@ -60,6 +71,13 @@ int			check_fractal_type(int ac, char **av);
 
 void		graphics(t_mlx mlx);
 void		menu(t_mlx *mlx);
+
+/* ------------------------------ Image ------------------------------------- */
+
+t_image		*new_image(t_mlx *mlx);
+void		clear_image(t_image *image);
+t_image		*delete_image(t_mlx *mlx, t_image *img);
+void		put_pixel_in_image(t_image *image, int x, int y, int color);
 
 /* ----------------------------- Controls ----------------------------------- */
 

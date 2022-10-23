@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:43:52 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/21 13:35:27 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/23 18:02:46 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static void	run_fractal_equation_third(t_mlx *mlx)
 
 void	optional_fractal_calculus(t_mlx mlx)
 {
-	mlx.x = 0;
 	mlx.y = 0;
+	clear_image(mlx.image);
 	while (mlx.y < WIN_HEIGHT)
 	{
 		mlx.constant_y = mlx.y_axis_min
@@ -50,11 +50,12 @@ void	optional_fractal_calculus(t_mlx mlx)
 			mlx.y_pixel = mlx.constant_y;
 			mlx.colour = 0;
 			run_fractal_equation_third(&mlx);
-			mlx_pixel_put(mlx.mlxptr, mlx.winptr,
-				mlx.x, mlx.y, set_colour(mlx.colour));
+			put_pixel_in_image(mlx.image, mlx.x, mlx.y, set_colour(mlx.colour));
+			//mlx_pixel_put(mlx.mlxptr, mlx.winptr, mlx.x, mlx.y, set_colour(mlx.colour));
 			mlx.x++;
 		}
 		mlx.y++;
 	}
+	mlx_put_image_to_window(mlx.mlxptr, mlx.winptr, mlx.image->image, 0, 0);
 	menu(&mlx);
 }

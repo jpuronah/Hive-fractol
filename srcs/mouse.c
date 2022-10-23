@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 21:54:44 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/21 14:10:03 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/23 18:14:08 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@ static void	mouse_zoom(t_mlx *mlx, int key)
 {
 	if (key == 4)
 	{
-		mlx->x_axis_min *= 0.97;
-		mlx->x_axis_max *= 0.97;
-		mlx->y_axis_min *= 0.97;
-		mlx->y_axis_max *= 0.97;
+		mlx->x_axis_min *= 0.5;
+		mlx->x_axis_max *= 0.5;
+		mlx->y_axis_min *= 0.5;
+		mlx->y_axis_max *= 0.5;
 	}
 	if (key == 5)
 	{
-		mlx->x_axis_min *= 1.03;
-		mlx->x_axis_max *= 1.03;
-		mlx->y_axis_min *= 1.03;
-		mlx->y_axis_max *= 1.03;
+		mlx->x_axis_min *= 1.5;
+		mlx->x_axis_max *= 1.5;
+		mlx->y_axis_min *= 1.5;
+		mlx->y_axis_max *= 1.5;
 	}
 }
 
