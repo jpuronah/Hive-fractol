@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 10:56:20 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/23 18:12:23 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/27 08:23:43 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,24 @@ int	set_colour(int colour)
 		return (U);
 	if (colour % 33 == 1)
 		return (V);
+	if (colour % 34 == 1)
+		return (W);
+	if (colour % 35 == 1)
+		return (X);
+	if (colour % 36 == 1)
+		return (Y);
+	if (colour % 37 == 1)
+		return (Z);
+	if (colour % 38 == 1)
+		return (AA);
+	if (colour % 39 == 1)
+		return (AB);
+	if (colour % 40 == 1)
+		return (AC);
+	if (colour % 41 == 1)
+		return (AD);
+	if (colour % 42 == 1)
+		return (AE);
 	if (colour > 99)
 		return (BLACK);
 	return (ret);

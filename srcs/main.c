@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:43:13 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/23 18:25:48 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/27 08:29:17 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	set_axis_min_max(t_mlx *mlx, int fractal_type)
 {
-	if (fractal_type == 2)
+	if (fractal_type == JULIA)
 	{
-		mlx->iterations = 1111;
+		mlx->iterations = 80;
 		mlx->x_axis_min = -2.0;
 		mlx->x_axis_max = 2.0;
 		mlx->y_axis_min = -2.0;
@@ -24,11 +24,11 @@ static void	set_axis_min_max(t_mlx *mlx, int fractal_type)
 	}
 	else
 	{
-		mlx->iterations = 55;
+		mlx->iterations = 60;
 		mlx->x_axis_min = -2.0;
-		mlx->x_axis_max = 2.0;
-		mlx->y_axis_min = -1.3;
-		mlx->y_axis_max = 1.3;
+		mlx->x_axis_max = 1.0;
+		mlx->y_axis_min = -1.12;
+		mlx->y_axis_max = 1.12;
 	}
 }
 
@@ -60,14 +60,14 @@ static t_mlx	init_mlx(int fractal_type)
 	t_mlx	mlx;
 
 	mlx.mlxptr = mlx_init();
-	//if (mlx.mlxptr == NULL)
-	//	print_error("Could not initialize mlx pointer");
+	if (mlx.mlxptr == NULL)
+		print_error("Could not initialize mlx pointer");
 	mlx.winptr = mlx_new_window(mlx.mlxptr, WIN_WIDTH, WIN_HEIGHT, "Fractol");
-	//if (mlx.winptr == NULL)
-	//	print_error("Could not initialize mlx window pointer");
+	if (mlx.winptr == NULL)
+		print_error("Could not initialize mlx window pointer");
 	mlx.image = new_image(&mlx);
-	//if (mlx.image == NULL)
-	//	print_error("Could not initialize image pointer");
+	if (mlx.image == NULL)
+		print_error("Could not initialize image pointer");
 	mlx.fractal_type = fractal_type;
 	mlx.fractal_type = fractal_type;
 	mlx.x = 0;

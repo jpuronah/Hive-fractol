@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 21:54:44 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/23 18:14:08 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/27 08:31:49 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	set_axis_default(t_mlx *mlx)
 {
-	if (mlx->fractal_type == 2)
+	if (mlx->fractal_type == JULIA)
 	{
-		mlx->iterations = 25;
+		mlx->iterations = 80;
 		mlx->x_axis_min = -2.0;
 		mlx->x_axis_max = 2.0;
 		mlx->y_axis_min = -2.0;
@@ -24,7 +24,7 @@ static void	set_axis_default(t_mlx *mlx)
 	}
 	else
 	{
-		mlx->iterations = 25;
+		mlx->iterations = 60;
 		mlx->x_axis_min = -2.0;
 		mlx->x_axis_max = 1.0;
 		mlx->y_axis_min = -1.12;

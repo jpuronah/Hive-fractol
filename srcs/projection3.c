@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 21:43:52 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/23 18:02:46 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/27 08:32:00 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	optional_fractal_calculus(t_mlx mlx)
 			mlx.colour = 0;
 			run_fractal_equation_third(&mlx);
 			put_pixel_in_image(mlx.image, mlx.x, mlx.y, set_colour(mlx.colour));
-			//mlx_pixel_put(mlx.mlxptr, mlx.winptr, mlx.x, mlx.y, set_colour(mlx.colour));
 			mlx.x++;
 		}
 		mlx.y++;

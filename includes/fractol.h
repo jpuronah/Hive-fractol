@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/26 11:18:34 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/23 18:18:16 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/10/27 08:26:49 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@
 # include "../includes/colors.h"
 # include <mlx.h>
 # include <stdio.h>
+
+# define MANDELBROT 1
+# define JULIA 2
+# define TRICORN 3
 
 typedef struct s_image
 {
