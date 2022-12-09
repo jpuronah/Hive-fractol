@@ -6,7 +6,7 @@
 /*   By: jpuronah <jpuronah@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 21:54:44 by jpuronah          #+#    #+#             */
-/*   Updated: 2022/10/27 08:31:49 by jpuronah         ###   ########.fr       */
+/*   Updated: 2022/11/30 17:43:12 by jpuronah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,11 @@ static void	mouse_zoom(t_mlx *mlx, int key)
 	}
 }
 
+#include <stdio.h>
+
 int	mouse_actions(int key, int x, int y, t_mlx *mlx)
 {
+	printf("%d, %d\n", x, y);
 	mouse_zoom(mlx, key);
 	mlx->pixel_length_x
 		= (mlx->x_axis_max - mlx->x_axis_min) / (WIN_WIDTH - 1);
